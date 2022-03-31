@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wildcards and Regular Expressions (regex) &#8212; unix_intro v1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wildcards-and-regular-expressions-regex">
+<h1>Wildcards and Regular Expressions (regex)<a class="headerlink" href="#wildcards-and-regular-expressions-regex" title="Permalink to this headline">¶</a></h1>
+<p><strong>Wildcards</strong> are useful in many ways! We can use them in commands to
+perform actions on more than one file at a time or to find part of a
+phrase in a text file. There are many uses for wildcards, but in
+general, we can group them into two different major ways that wildcards
+are used as:</p>
+<ul class="simple">
+<li><p><strong>globbing patterns/standard wildcards</strong> that are often used by the
+shell</p></li>
+<li><p><strong>regular expressions</strong> which are popular with many other commands
+and popular for use with text searching and manipulation.</p></li>
+</ul>
+<p>Note that <strong>wildcard patterns are not regular expressions</strong>, although
+they are a bit similar. There are two major differences:</p>
+<ul class="simple">
+<li></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  **Wildcard patterns** match **filenames**, while **regular
+    expressions** match **text**.
+</pre></div>
+</div>
+<ul class="simple">
+<li></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2.  The conventions are not the same: for example, in a **regular
+    expression** `*` means zero or more copies of the preceding
+    thing, while as a **wildcard** it matches any character zero or
+    more times.
+</pre></div>
+</div>
+<p>::: {.alert .alert-info role=”alert”}
+<strong>TIP:</strong></p>
+<hr class="docutils" />
+<p>If you have a file with <strong>wildcard</strong> expressions in it then you can use
+<strong>single quotes</strong> (<code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>) to stop bash expanding them or use
+<strong>backslashes</strong> (escape characters <code class="docutils literal notranslate"><span class="pre">\</span></code>), or both. But keep in mind that
+we should avoid creating files with names that contain wildcards.
+:::</p>
+<div class="section" id="standard-wildcards-globbing-patterns">
+<h2>Standard Wildcards (globbing patterns)<a class="headerlink" href="#standard-wildcards-globbing-patterns" title="Permalink to this headline">¶</a></h2>
+<p><strong>Standard wildcards</strong> (also known as <strong>globbing patterns</strong>) are used by
+nearly any command (including <code class="docutils literal notranslate"><span class="pre">mv</span></code>, <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">rm</span></code> and many others) to work
+with multiple files. For the manual page type: <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">glob</span></code>.</p>
+<p><strong>Wildcard pattern</strong> is a string that contains one of the special
+characters such as: <code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">[</span></code>…<br />
+<strong>Globbing</strong> is the operation that expands a wildcard pattern into the
+list of pathnames matching the pattern.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> <br />represents <strong>any single character</strong>. <br /> e.g. for <code class="docutils literal notranslate"><span class="pre">hd?</span></code>
+Linux would look for <code class="docutils literal notranslate"><span class="pre">hda</span></code>, <code class="docutils literal notranslate"><span class="pre">hdb</span></code>, <code class="docutils literal notranslate"><span class="pre">hdc</span></code> and every other
+letter/number between a-z, 0-9.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> <br />represents <strong>any number of characters including none</strong>,
+(in other words zero or more characters). <br /> e.g. If we specify
+a <code class="docutils literal notranslate"><span class="pre">cd*</span></code> it would use <code class="docutils literal notranslate"><span class="pre">cda</span></code>, <code class="docutils literal notranslate"><span class="pre">cdrom</span></code>, <code class="docutils literal notranslate"><span class="pre">cdrecord</span></code> and anything that
+starts with <code class="docutils literal notranslate"><span class="pre">cd</span></code> also including <code class="docutils literal notranslate"><span class="pre">cd</span></code> itself. <code class="docutils literal notranslate"><span class="pre">m*l</span></code> could by <code class="docutils literal notranslate"><span class="pre">mill</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mull</span></code>, <code class="docutils literal notranslate"><span class="pre">ml</span></code>, and anything that starts with an <code class="docutils literal notranslate"><span class="pre">m</span></code> and ends with an
+<code class="docutils literal notranslate"><span class="pre">l</span></code>.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <br />represents a <strong>specified range</strong> within the brackets.
+This kind of wildcard specifies an <strong>OR</strong> relationship. <br />e.g.
+If we do <code class="docutils literal notranslate"><span class="pre">m[a,o,u]m</span></code> it can become: <code class="docutils literal notranslate"><span class="pre">mam</span></code>, <code class="docutils literal notranslate"><span class="pre">mum</span></code>, <code class="docutils literal notranslate"><span class="pre">mom</span></code>; <br />if we
+do <code class="docutils literal notranslate"><span class="pre">m[a-d]m</span></code> it can become anything that starts and ends with <code class="docutils literal notranslate"><span class="pre">m</span></code>
+and has any character <code class="docutils literal notranslate"><span class="pre">a</span></code> to <code class="docutils literal notranslate"><span class="pre">d</span></code> in between (e.g. these would work:
+<code class="docutils literal notranslate"><span class="pre">mam</span></code>, <code class="docutils literal notranslate"><span class="pre">mbm</span></code>, <code class="docutils literal notranslate"><span class="pre">mcm</span></code>, <code class="docutils literal notranslate"><span class="pre">mdm</span></code>).</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> <br />represents <strong>anything that matches either wildcard(s),
+or exact name(s)</strong> (an <strong>“OR”</strong> relationship, one or the other).
+Multiple terms are separated by commas <code class="docutils literal notranslate"><span class="pre">,</span></code> and each term must be the
+name of something or a wildcard. <br />e.g. <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">{*.doc,*.pdf}</span> <span class="pre">~</span></code>
+will copy anything ending with <code class="docutils literal notranslate"><span class="pre">.doc</span></code> or <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> to the user’s home
+directory (<code class="docutils literal notranslate"><span class="pre">~</span></code>). Note that <strong>spaces are not allowed</strong> after the
+commas (or anywhere else).</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[!]</span></code> <br />This construct is similar to the <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> construct, except
+rather than matching any characters inside the brackets, it’ll
+<strong>match any character that is not listed in the brackets</strong>. This is
+a <strong>logical NOT</strong>. <br />e.g. <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">myfile[!9]</span></code> will remove all files
+starting with <code class="docutils literal notranslate"><span class="pre">myfiles</span></code> (ie. <code class="docutils literal notranslate"><span class="pre">myfiles1</span></code>, <code class="docutils literal notranslate"><span class="pre">myfiles2</span></code> etc.) but won’t
+remove a file with the number 9 <strong>anywhere</strong> within its name.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\</span></code> <br />is used as an <strong>“escape” character</strong>, i.e. to protect a
+subsequent special character. Thus, <code class="docutils literal notranslate"><span class="pre">\\</span></code> searches for a backslash.
+Note you may need to use quotation marks and backslash(es).</p></li>
+</ul>
+<hr class="docutils" />
+<p>Wildcards can be used in combination with each other e.g. <code class="docutils literal notranslate"><span class="pre">?_*txt</span></code>
+matches one character followed by <code class="docutils literal notranslate"><span class="pre">_</span></code> followed by any number of
+characters including nothing and finally ending with <code class="docutils literal notranslate"><span class="pre">txt</span></code>. Thus this
+pattern would give us <code class="docutils literal notranslate"><span class="pre">1_browsing_textfiles.txt</span></code>,
+<code class="docutils literal notranslate"><span class="pre">2_searching_patterns.txt</span></code> in <code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises</span></code> directory.</p>
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong> <br /></p>
+<hr class="docutils" />
+<p>When in the <code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/genes</span></code> directory, which <code class="docutils literal notranslate"><span class="pre">ls</span></code>
+command(s) will produce <code class="docutils literal notranslate"><span class="pre">example.bed</span></code> and <code class="docutils literal notranslate"><span class="pre">mgat_genes.gb</span></code> as the output?
+<br />a) <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.*</span></code> <br />b) <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*b*</span></code> <br />c) <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.b*</span></code> <br />d)
+<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">??a*</span></code> <br />e) <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*a*e*b*</span></code></p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p>Correct answers are: b), d) and e)</p>
+</details>
+:::
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong> <br /></p>
+<hr class="docutils" />
+<p>From <code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/genes</span></code> directory, copy all files that are
+ending with 3 characters after the dot (i.e. <code class="docutils literal notranslate"><span class="pre">.???</span></code>) to your <code class="docutils literal notranslate"><span class="pre">~/backup</span></code>
+directory.</p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">~/unix_intro/exercises/genes/*.???</span> <span class="pre">~/backup</span></code></p>
+</details>
+:::
+</div>
+<hr class="docutils" />
+<div class="section" id="regular-expression-regex">
+<h2>Regular expression (regex)<a class="headerlink" href="#regular-expression-regex" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>regular expression</strong> or <strong>regex</strong> is a pattern that matches a set of
+strings. They can be described as a type of globbing pattern used when
+working with <strong>text</strong>. They are used for any form of manipulation of
+multiple parts of text and by various programming languages (e.g.
+<code class="docutils literal notranslate"><span class="pre">grep</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">awk</span></code>, and many others) that work with text. For the
+manual page type: <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">regex</span></code>.</p>
+<p>::: {.alert .alert-info role=”alert”}
+<strong>TIP:</strong></p>
+<hr class="docutils" />
+<p>If your regular expressions don’t seem to be working then you probably
+need to use single quotation marks (<code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>) over the sentence and then
+use backslashes (<code class="docutils literal notranslate"><span class="pre">\</span></code>) on every single special character.
+:::</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> <br />matches any single character, equivalent to <code class="docutils literal notranslate"><span class="pre">?</span></code> in
+standard wildcard expressions. <br />e.g. <code class="docutils literal notranslate"><span class="pre">m.a</span></code> matches <code class="docutils literal notranslate"><span class="pre">mpa</span></code> and
+<code class="docutils literal notranslate"><span class="pre">mea</span></code> but not <code class="docutils literal notranslate"><span class="pre">ma</span></code> or <code class="docutils literal notranslate"><span class="pre">mppa</span></code></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <br />matches any of the characters within parenthesis. It
+specifies a range. <br />e.g. <code class="docutils literal notranslate"><span class="pre">m[a,o,u]m</span></code> cmatches <code class="docutils literal notranslate"><span class="pre">mam</span></code>, <code class="docutils literal notranslate"><span class="pre">mum</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mom</span></code>; while <code class="docutils literal notranslate"><span class="pre">m[a-d]m</span></code> matches anything that starts and ends with
+<code class="docutils literal notranslate"><span class="pre">m</span></code> and has any character <code class="docutils literal notranslate"><span class="pre">a</span></code> to <code class="docutils literal notranslate"><span class="pre">d</span></code> in between, e.g. <code class="docutils literal notranslate"><span class="pre">mam</span></code>, <code class="docutils literal notranslate"><span class="pre">mbm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mcm</span></code>, <code class="docutils literal notranslate"><span class="pre">mdm</span></code>. This kind of wildcard specifies an <strong>or</strong> relationship
+(you only need one to match)</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.*</span></code><br />
+<br />matches any character, any number of times, it is equivalent
+to <code class="docutils literal notranslate"><span class="pre">*</span></code> in standard wildcards. <br />e.g. <code class="docutils literal notranslate"><span class="pre">m.*</span></code> mathces anything
+starting with <code class="docutils literal notranslate"><span class="pre">m</span></code></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> <br />matches zero or more times. <br />e.g. <code class="docutils literal notranslate"><span class="pre">n*</span></code> matches <code class="docutils literal notranslate"><span class="pre">n</span></code>,
+<code class="docutils literal notranslate"><span class="pre">nn</span></code>, <code class="docutils literal notranslate"><span class="pre">nnnn</span></code>, <code class="docutils literal notranslate"><span class="pre">nnnnnnn</span></code> but not <code class="docutils literal notranslate"><span class="pre">na</span></code> or any other character.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code><br />
+<br />matches the beginning of the line. <br />e.g. <code class="docutils literal notranslate"><span class="pre">^a</span></code> matches a
+line starting with an <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code><br />
+<br />matches the end of the line. <br />e.g. <code class="docutils literal notranslate"><span class="pre">a$</span></code> matches a line
+ending with an <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code><br />
+<br /> performs a <strong>logical OR relationship between wildcards</strong>. We
+can use it to search for something or something else (possibly using
+two different regular expressions). We may need to add a <code class="docutils literal notranslate"><span class="pre">\</span></code>
+(backslash) before this command to work, because the shell may
+attempt to interpret this as a pipe. <br />e.g. <code class="docutils literal notranslate"><span class="pre">^a\|^b</span></code> matches a
+line starting with an <code class="docutils literal notranslate"><span class="pre">a</span></code> or with an <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[^]</span></code><br />
+<br /> matches anything that is <strong>not</strong> listed within square
+brackets. It is the equivalent of <code class="docutils literal notranslate"><span class="pre">[!]</span></code> in standard wildcards.
+<br />e.g. <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">myfile[^9]</span></code> will remove all <code class="docutils literal notranslate"><span class="pre">myfiles*</span></code> (i.e.
+<code class="docutils literal notranslate"><span class="pre">myfiles1</span></code>, <code class="docutils literal notranslate"><span class="pre">myfiles2</span></code> etc.) but won’t remove a file with the number
+9 anywhere within its name.</p></li>
+</ul>
+<hr class="docutils" />
+<p><br /><br /><br /></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">unix_intro</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, bajicv.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/docs/regex.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Print lines matching a pattern &#8212; unix_intro v1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="print-lines-matching-a-pattern">
+<h1>Print lines matching a pattern<a class="headerlink" href="#print-lines-matching-a-pattern" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> is one of many standard Unix utilities. It searches files for
+specified words or patterns. The <code class="docutils literal notranslate"><span class="pre">grep</span></code> command is <em>case sensitive</em>.</p>
+<div class="section" id="using-grep-on-a-single-file">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">grep</span></code> on a single file<a class="headerlink" href="#using-grep-on-a-single-file" title="Permalink to this headline">¶</a></h2>
+<p>The instructions for the <code class="docutils literal notranslate"><span class="pre">grep</span></code> exercises are stored in the
+<code class="docutils literal notranslate"><span class="pre">2_searching_patterns.txt</span></code> file. If we look at this file with <code class="docutils literal notranslate"><span class="pre">head</span></code> or
+<code class="docutils literal notranslate"><span class="pre">less</span></code>, we will see that there is no obvious meaning in its content.
+This is only because the instructions are hidden in the file, just so we
+can practice the <code class="docutils literal notranslate"><span class="pre">grep</span></code> command. To find out what is inside we have to
+search for the lines containing the word <em>“start”</em>. To find them, let’s
+use <code class="docutils literal notranslate"><span class="pre">grep</span></code>:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+grep start 2_searching_patterns.txt
+</pre></div>
+</div>
+<p>Now the document told us to <code class="docutils literal notranslate"><span class="pre">grep</span></code> the word <em>“help”</em> to continue:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+grep help 2_searching_patterns.txt
+</pre></div>
+</div>
+<p>For the next exercise, we need to open <code class="docutils literal notranslate"><span class="pre">grep</span></code>’s documentation and
+identify two options:</p>
+<ul class="simple">
+<li><p>the option for <em>case-insensitive</em> searches</p></li>
+<li><p>the option for <em>counting the number of matching lines</em>, instead of
+printing them to the screen.</p></li>
+</ul>
+<p>Once we have identified these options, let’s do a case-insensitive
+search on this file for the word <em>“ignorecase”</em>, then we will count the
+number of lines.</p>
+<p>If we do a search for <em>“ignorecase”</em> without any option, we only get
+some of the lines.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+grep ignorecase 2_searching_patterns.txt
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-i</span></code> option allows to do a <strong>case-insensitive</strong> search.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+grep -i ignorecase 2_searching_patterns.txt
+</pre></div>
+</div>
+<p>To solve the exercise, we also have to <strong>count the number of output
+lines</strong>. This can be done with the <code class="docutils literal notranslate"><span class="pre">-c</span></code> option:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+grep -i -c ignorecase 2_searching_patterns.txt
+</pre></div>
+</div>
+<p>Solution: how to find the instructions for the next exercise</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+grep 21 2_searching_patterns.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-grep-on-multiple-files">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">grep</span></code> on multiple files<a class="headerlink" href="#using-grep-on-multiple-files" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> is useful to search over multiple files in a single command. The
+directory <code class="docutils literal notranslate"><span class="pre">~/exercises/multiplefiles/</span></code> contains 50 randomly generated
+files. You can see their contents with
+<code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">~/unix_intro/exercises/multiplefiles/*</span></code> or with <code class="docutils literal notranslate"><span class="pre">less</span></code> command on
+each of them.</p>
+<p>One of these files contains the word <em>“regex”</em> in it. Are you able to
+find it?</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">*</span></code> character to specify multiple files:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+grep &#39;regex&#39; multiplefiles/*
+</pre></div>
+</div>
+</div>
+<div class="section" id="searching-multiple-patterns-with-piping-system">
+<h2>Searching multiple patterns with piping system<a class="headerlink" href="#searching-multiple-patterns-with-piping-system" title="Permalink to this headline">¶</a></h2>
+<p>We can combine <code class="docutils literal notranslate"><span class="pre">grep</span></code> with pipes (<code class="docutils literal notranslate"><span class="pre">|</span></code>) to search for multiple patterns
+(i.e. we can use one <code class="docutils literal notranslate"><span class="pre">grep</span></code> command, and then pipe the output of it to
+another <code class="docutils literal notranslate"><span class="pre">grep</span></code> and so on) like this:
+<code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">(first</span> <span class="pre">pattern)</span> <span class="pre">myfile.txt</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">(second</span> <span class="pre">pattern)</span></code></p>
+<p>Let’s practice this on the genbank file called <code class="docutils literal notranslate"><span class="pre">mgat_genes.gb</span></code> in
+<code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/genes</span></code> directory. Take a look at this file and
+notice how this format is well suited for grep searches:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises/genes
+head mgat_genes.gb
+</pre></div>
+</div>
+<p>Let’s say that we are interested in finding all the lines where
+<strong>“ORGANISM”</strong> is <strong>“Homo sapiens”</strong>.</p>
+<p>We can do it with two grep commands:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises/genes
+grep ORGANISM mgat_genes.gb | grep &#39;Homo sapiens&#39;
+</pre></div>
+</div>
+<p>Notice that searching for <em>“Homo sapiens”</em> alone would not be enough, as
+there are other lines where the word “Homo sapiens” is present. The file
+contains sequences from two other organisms apart from Homo sapiens. Can
+you guess which one to search for the next exercise? Try “bos taurus”:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises/genes
+grep ORGANISM mgat_genes.gb | grep taurus
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="regular-expressions-regex-in-grep">
+<h2>Regular Expressions (regex) in <code class="docutils literal notranslate"><span class="pre">grep</span></code><a class="headerlink" href="#regular-expressions-regex-in-grep" title="Permalink to this headline">¶</a></h2>
+<p>As we learned before a <strong>regular expression</strong> or <strong>regex</strong> is a pattern
+that matches a set of strings. A pattern consists of operators,
+constructs literal characters, and meta-characters, which have special
+meaning. <code class="docutils literal notranslate"><span class="pre">grep</span></code> supports three regular expression syntaxes:</p>
+<ul class="simple">
+<li><p><strong>Basic</strong> (<code class="docutils literal notranslate"><span class="pre">-G</span></code> or <code class="docutils literal notranslate"><span class="pre">--basic-regexp</span></code>),</p></li>
+<li><p><strong>Extended</strong> (<code class="docutils literal notranslate"><span class="pre">-E</span></code> or <code class="docutils literal notranslate"><span class="pre">--extended-regexp</span></code>), and</p></li>
+<li><p><strong>Perl-compatible</strong> (<code class="docutils literal notranslate"><span class="pre">-P</span></code> or <code class="docutils literal notranslate"><span class="pre">--perl-regexp</span></code>).</p></li>
+</ul>
+<p>In its simplest form, when no regular expression type is given, <code class="docutils literal notranslate"><span class="pre">grep</span></code>
+interpret search patterns as <strong>basic regular expressions</strong>. To interpret
+the pattern as an extended regular expression, we should use the option
+<code class="docutils literal notranslate"><span class="pre">-E</span></code> ( or <code class="docutils literal notranslate"><span class="pre">--extended-regexp</span></code>) option.</p>
+<p>Now let’s go to <code class="docutils literal notranslate"><span class="pre">unix_intro/exercises/genes</span></code> direcotry and use <code class="docutils literal notranslate"><span class="pre">grep</span></code> to
+identify all the sequences containing <strong>three As</strong>, followed by any
+<strong>two characters</strong>, followed by <strong>three Ts</strong> in the file called
+<code class="docutils literal notranslate"><span class="pre">sequences.fasta</span></code>?</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises/genes
+grep &#39;AAA..TTT&#39; sequences.fasta
+</pre></div>
+</div>
+<p>If we use the <code class="docutils literal notranslate"><span class="pre">-B1</span></code> <code class="docutils literal notranslate"><span class="pre">grep</span></code> option, we can retrieve the names of these
+sequences:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises/genes
+grep -B1 &#39;AAA..TTT&#39; sequences.fasta
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-B</span></code> option will print specified number of lines of leading context
+before matching lines (e.g. <code class="docutils literal notranslate"><span class="pre">-B1</span></code> one line before matched line, <code class="docutils literal notranslate"><span class="pre">-B9</span></code>
+nine lines before matched line, and so on).</p>
+<p>Now, let’s <strong>pipe</strong> an additional <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">'&gt;'</span></code> to see a cow:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises/genes
+grep -B1 &#39;AAA..TTT&#39; sequences.fasta | grep &#39;&gt;&#39;
+</pre></div>
+</div>
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong></p>
+<hr class="docutils" />
+<p>How would you use <code class="docutils literal notranslate"><span class="pre">grep</span></code> on file <code class="docutils literal notranslate"><span class="pre">sequences.fasta</span></code> that is located in
+<code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/genes</span></code> to find: <br />a) lines starting with an
+<code class="docutils literal notranslate"><span class="pre">G</span></code> and ending with an <code class="docutils literal notranslate"><span class="pre">C</span></code>? <br />b) lines starting with an <code class="docutils literal notranslate"><span class="pre">G</span></code> and
+ending with an <code class="docutils literal notranslate"><span class="pre">C</span></code> or lines starting with an <code class="docutils literal notranslate"><span class="pre">C</span></code> and ending with an <code class="docutils literal notranslate"><span class="pre">T</span></code>?
+(Hint: use regex for logical OR relationship between wildcards <code class="docutils literal notranslate"><span class="pre">\|</span></code>)
+<br />c) lines starting with an <code class="docutils literal notranslate"><span class="pre">G</span></code> and ending with an <code class="docutils literal notranslate"><span class="pre">C</span></code>, and contain
+in them <code class="docutils literal notranslate"><span class="pre">N</span></code> followed with an <code class="docutils literal notranslate"><span class="pre">T</span></code>. (Hint: pipe from one grep to another)</p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p><br />a) <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">'^G.*C$'</span> <span class="pre">sequences.fasta</span></code> <br />b)
+<code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">'^G.*C$\|^C.*T$'</span> <span class="pre">sequences.fasta</span></code> <br />c)
+<code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">'^G.*C$'</span> <span class="pre">sequences.fasta</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">'NT'</span></code></p>
+</details>
+:::
+<hr class="docutils" />
+<p><br /><br /><br /></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">unix_intro</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, bajicv.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/docs/grep.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

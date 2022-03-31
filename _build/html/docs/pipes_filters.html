@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pipes and Filters &#8212; unix_intro v1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pipes-and-filters">
+<h1>Pipes and Filters<a class="headerlink" href="#pipes-and-filters" title="Permalink to this headline">¶</a></h1>
+<p>Now that we know a few basic commands, we can finally look at the
+shell’s most powerful feature: the ease with which it lets us combine
+existing programs in new ways. We’ll start with the directory called
+<code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/multiplefiles</span></code> that contains 50 randomly
+generated files.</p>
+<hr class="docutils" />
+<div class="section" id="redirect">
+<h2>Redirect <code class="docutils literal notranslate"><span class="pre">&gt;</span></code><a class="headerlink" href="#redirect" title="Permalink to this headline">¶</a></h2>
+<p>The greater than symbol <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, tells the shell to redirect the command’s
+output to a <em>file</em> instead of printing it to the <em>screen</em>.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/multiplefiles
+wc -l *.txt &gt; ~/lengths.txt
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="append">
+<h2>Append <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code><a class="headerlink" href="#append" title="Permalink to this headline">¶</a></h2>
+<p>We have seen the use of <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, but there is a similar operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> which
+works slightly differently. We’ll learn about the differences between
+these two operators by printing some strings. We can use the <code class="docutils literal notranslate"><span class="pre">echo</span></code>
+command to print strings e.g.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>echo &#39;I absolutely adore WHALES and echo command helps me in expressing my love for them!&#39;
+</pre></div>
+</div>
+<p>Now run each of the commands twice to reveal the difference between <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>echo &#39;I love whales!&#39; &gt; ~/redirect.txt
+echo &#39;I love whales!&#39; &gt; ~/redirect.txt
+</pre></div>
+</div>
+<p>and:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>rm ~/append.txt
+echo &#39;I love whales!&#39; &gt;&gt; ~/append.txt
+echo &#39;I love whales!&#39; &gt;&gt; ~/append.txt
+</pre></div>
+</div>
+<p>Now let’s see what’s in the files:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~
+head redirect.txt append.txt 
+</pre></div>
+</div>
+<p>In the first example with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, the string <em>“I love whales!”</em> is written
+to <code class="docutils literal notranslate"><span class="pre">redirect.txt</span></code>, but the file gets <strong>overwritten</strong> each time we run
+the command.</p>
+<p>In the second example with <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>, the string <em>“I love whales!”</em> is
+written to <code class="docutils literal notranslate"><span class="pre">append.txt</span></code>, but the string is <strong>appended</strong> to the file
+every time we repeat the command with the same file name at the end.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="pipe">
+<h2>Pipe <code class="docutils literal notranslate"><span class="pre">|</span></code><a class="headerlink" href="#pipe" title="Permalink to this headline">¶</a></h2>
+<p>The vertical bar <code class="docutils literal notranslate"><span class="pre">|</span></code> between the two commands is called a <strong>pipe</strong>. It
+tells the shell that we want to use the output of the command on the
+left as the input to the command on the right.</p>
+<p>Nothing prevents us from chaining pipes consecutively. That is, we can,
+for example, send the output of <code class="docutils literal notranslate"><span class="pre">wc</span></code> directly to <code class="docutils literal notranslate"><span class="pre">sort</span></code>, and then the
+resulting output to <code class="docutils literal notranslate"><span class="pre">head</span></code>.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd  ~/unix_intro/exercises/multiplefiles
+wc -w *.txt | sort -n | head -n 1
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="filters">
+<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>filter</strong> is a program (e.g. <code class="docutils literal notranslate"><span class="pre">wc</span></code>, <code class="docutils literal notranslate"><span class="pre">sort</span></code>, <code class="docutils literal notranslate"><span class="pre">grep</span></code>, <code class="docutils literal notranslate"><span class="pre">uniq</span></code>, <code class="docutils literal notranslate"><span class="pre">cat</span></code>,
+<code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">tale</span></code>…) that transforms a stream of input into a stream of
+output. Almost all of the standard Unix tools can work this way: unless
+told to do otherwise, they read from standard input, do something with
+what they’ve read, and write to standard output.</p>
+<hr class="docutils" />
+<p><br /><br /><br /></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">unix_intro</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, bajicv.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/docs/pipes_filters.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

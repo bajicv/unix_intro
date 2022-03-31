@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change file mode &#8212; unix_intro v1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="change-file-mode">
+<h1>Change file mode<a class="headerlink" href="#change-file-mode" title="Permalink to this headline">¶</a></h1>
+<p>It could be that some of the scripts we created are not working, not
+because we made a mistake, but because for the file we created we didn’t
+enable execution. We can change that with <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command.</p>
+<p>When we use <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> command, we can see various information related to
+file permission:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd unix_intro/exercises
+ls -l
+</pre></div>
+</div>
+<p>The first column represents different access modes, i.e., the permission
+associated with a file or a directory (e.g. <code class="docutils literal notranslate"><span class="pre">drwxrwxrwx</span></code>).</p>
+<p><img alt="filepermission" src="docs/C:/Users/vladi/Nextcloud/Nowick_Lab/Master_course_Bioinformatics_for_Biologists/SoSe2020/file-permission-explanation.png" />{width=”100%”}</p>
+<p>The permissions are broken into groups of threes, and each position in
+the group denotes specific permission, in this order: <strong>read (r)</strong>,
+<strong>write (w)</strong>, <strong>execute (x)</strong>.</p>
+<ul class="simple">
+<li><p>The first character (1) indicates whether the element is a
+<strong>directory</strong> (<code class="docutils literal notranslate"><span class="pre">d</span></code>) or a <strong>file</strong> (<code class="docutils literal notranslate"><span class="pre">-</span></code>) For example, <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">rwx</span> <span class="pre">r-x</span> <span class="pre">r--</span></code>
+represents that the element is a file (-).</p></li>
+<li><p>The next three characters (2-4) represent the permissions for the
+file’s <strong>owner</strong>. For example, <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">rwx</span> <span class="pre">r-x</span> <span class="pre">r--</span></code> represents that the
+owner has read (r), write (w) and execute (x) permission.</p></li>
+<li><p>The second group of three characters (5-7) consists of the
+permissions for the <strong>group</strong> to which the file belongs. For
+example, <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">rwx</span> <span class="pre">r-x</span> <span class="pre">r--</span></code> represents that the group has read (r) and
+execute (x) permission, but no write permission.</p></li>
+<li><p>The last group of three characters (8-10) represents the permissions
+for <strong>everyone else</strong>. For example, <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">rwx</span> <span class="pre">r-x</span> <span class="pre">r--</span></code> represents that
+there is read (r) only permission.</p></li>
+</ul>
+<p>To change file and directory permissions, we can use the command <code class="docutils literal notranslate"><span class="pre">chmod</span></code>
+(which stands for <em>“change mode”</em>). The owner of a file can change the
+permissions for <strong>user</strong> (<code class="docutils literal notranslate"><span class="pre">u</span></code>), <strong>group</strong> (<code class="docutils literal notranslate"><span class="pre">g</span></code>), or <strong>others</strong> (<code class="docutils literal notranslate"><span class="pre">o</span></code>) by
+adding (<code class="docutils literal notranslate"><span class="pre">+</span></code>) or subtracting (<code class="docutils literal notranslate"><span class="pre">-</span></code>) the <strong>read</strong> (<code class="docutils literal notranslate"><span class="pre">r</span></code>), <strong>write</strong> (<code class="docutils literal notranslate"><span class="pre">w</span></code>),
+and <strong>execute</strong> (<code class="docutils literal notranslate"><span class="pre">e</span></code>) permissions.</p>
+<p>There are two basic ways of using <code class="docutils literal notranslate"><span class="pre">chmod</span></code> to change file permissions:
+<strong>The symbolic method</strong>, and the <strong>absolute form</strong>. Here we will
+introduce only the symbolic method as it is easier to understand. The
+symbolic method allows us to specify permissions with a single-letter
+abbreviations. A <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command using this method consists of at least
+three parts from the following lists:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Access class</p></th>
+<th class="head"><p>Operator</p></th>
+<th class="head"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">u</span></code> (user)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code> (add access)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">r</span></code> (read)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">g</span></code> (group)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> (remove access)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">w</span></code> (write)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">o</span></code> (other)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">=</span></code> (set exact access)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> (execute)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> (all: <code class="docutils literal notranslate"><span class="pre">u</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code>, and <code class="docutils literal notranslate"><span class="pre">o</span></code>)</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, to add permission for <em>everyone to read</em> a file
+<code class="docutils literal notranslate"><span class="pre">example.bed</span></code> in the directory named <code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/genes</span></code>, at
+the Unix prompt, enter:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>chmod a+r example.bed
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">a</span></code> stands for “all”, the <code class="docutils literal notranslate"><span class="pre">+</span></code> for “add”, and the <code class="docutils literal notranslate"><span class="pre">r</span></code> for “read”. If
+you omit the access class, it’s assumed to be all, so you could also
+enter the previous example as:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>chmod +r example.bed
+</pre></div>
+</div>
+<p>You can also specify multiple classes and types with a single command.
+For example, to remove read and write permission for group and other
+users (leaving only yourself with read and write permission) on a file
+named myfile, you would enter:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>chmod go-rw example.bed
+</pre></div>
+</div>
+<p>You can also specify that different permissions be added and removed in
+the same command. For example, to remove write permission and add
+execute for all users on <code class="docutils literal notranslate"><span class="pre">example.bed</span></code>, you would enter:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>chmod a-w+x example.bed
+</pre></div>
+</div>
+<p>In each of these examples, the access types that aren’t specified are
+unchanged. The previous command, for example, doesn’t change any
+existing settings specifying whether users besides yourself may have
+read (<code class="docutils literal notranslate"><span class="pre">r</span></code>) access to <code class="docutils literal notranslate"><span class="pre">example.bed</span></code> You could also use the exact form to
+explicitly state that group and other users’ access is set only to read
+with the <code class="docutils literal notranslate"><span class="pre">=</span></code>operator:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>chmod go=r example.bed
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command also operates on <em>directories</em>. For example, to
+<em>remove write</em> permission for <em>other users</em> on a subdirectory named
+<code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/genes</span></code>, you would enter:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>chmod o-w ~/unix_intro/exercises/genes
+</pre></div>
+</div>
+<p>To change permissions <strong>recursively</strong> in all subdirectories below the
+specified directory, add the <code class="docutils literal notranslate"><span class="pre">-R</span></code> option; for example, to grant
+execution permissions for other users to a directory
+`<code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises</span></code> and all the subdirectories it contains, you
+would enter:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>chmod -R o+x ~/unix_intro/exercises
+</pre></div>
+</div>
+<p>Be careful when setting the permissions of directories, particularly
+your home directory <code class="docutils literal notranslate"><span class="pre">~</span></code>; you don’t want to lock yourself out by removing
+your own access!</p>
+<p>For more info check <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">chmod</span></code> or visit this
+<a class="reference external" href="https://kb.iu.edu/d/abdb">webpage</a>.</p>
+<hr class="docutils" />
+<p><br /><br /><br /></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">unix_intro</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, bajicv.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/docs/chmod.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

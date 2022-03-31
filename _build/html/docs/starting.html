@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starting UNIX terminal &#8212; unix_intro v1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="starting-unix-terminal">
+<h1>Starting UNIX terminal<a class="headerlink" href="#starting-unix-terminal" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="opening-terminal-tabset">
+<h2>Opening terminal {.tabset}<a class="headerlink" href="#opening-terminal-tabset" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>Unfortunately, Windows comes with <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">prompt</span></code> which is not of
+interest for us. However, there are many possibilities for us who have
+Windows OS to use Unix like terminal! Here are several options:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a> - free, easy to install
+toolbox for remote computing that provides a command-line interface.</p></li>
+<li><p><a class="reference external" href="https://ubuntu.com/tutorials/tutorial-ubuntu-on-windows#1-overview">Ubuntu on Windows
+10</a> -
+free <strong>Windows10</strong> app that provides Ubuntu terminal. Follow the
+instructions on how to install it
+<a class="reference external" href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">here</a></p></li>
+<li><p><a class="reference external" href="https://babun.github.io/">Babun</a> - free, easy to install. To use
+it, go to the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">menu</span></code>, select <code class="docutils literal notranslate"><span class="pre">Programs</span></code>, and click on <code class="docutils literal notranslate"><span class="pre">Babun</span></code>.</p></li>
+<li><p><a class="reference external" href="http://puttymanager.sourceforge.net/">Putty Manager</a> - extends
+putty and provides multiple tabs and options.</p></li>
+<li><p><a class="reference external" href="https://www.cygwin.com/">Cygwin</a> - emulates a whole Unix
+environment. You can execute commands on your computer, or connect
+to a remote server</p></li>
+</ul>
+</div>
+<div class="section" id="mac">
+<h3>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
+<p>The Mac command-line is a program called <strong>Terminal</strong>. It is located in
+the <code class="docutils literal notranslate"><span class="pre">/Applications/Utilities/</span></code> folder. To find it, go to your
+<code class="docutils literal notranslate"><span class="pre">Applications</span></code> folder. Near the bottom, you should find a folder called
+<code class="docutils literal notranslate"><span class="pre">Utilities</span></code>. Go inside, and one of the applications listed is called
+<code class="docutils literal notranslate"><span class="pre">Terminal</span></code>. Double-click that application to open it.</p>
+</div>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>To find it, click on <code class="docutils literal notranslate"><span class="pre">Applications</span></code> and search for <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Konsole</span></code>.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Go ahead and open the <strong>command-line</strong>. When you open it you will see a
+new window, with a simple
+<a class="reference external" href="https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt">prompt</a>
+which indicates that the shell is ready for the input.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="connecting-to-a-remote-server">
+<h2>Connecting to a remote server<a class="headerlink" href="#connecting-to-a-remote-server" title="Permalink to this headline">¶</a></h2>
+<p>We will do most of our exercises on the remote computers (physically
+located outside of your homes :)) using the
+<code class="docutils literal notranslate"><span class="pre">evop-login.imp.fu-berlin.de</span></code> server. We can access them through the
+terminal (or terminal emulator) that you just (installed and) opened.</p>
+<p>The login to the server is very straight forward for Linux and Mac, but
+the Windows can be a bit tricky depending on the software you chose to
+install at the beginning (from here on we assume you are using
+<code class="docutils literal notranslate"><span class="pre">MobaXterm</span></code> or <code class="docutils literal notranslate"><span class="pre">Ubuntu</span> <span class="pre">on</span> <span class="pre">Windows</span> <span class="pre">10</span> <span class="pre">app</span></code>).</p>
+<p>So, let’s do it! First, we have to open the terminal as described before
+and then we have to type:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh YourID@andorra.imp.fu-berlin.de
+ssh evop-login
+</pre></div>
+</div>
+<p>Executing <strong>graphical</strong> applications remotely is very demanding for the
+network, so by default, we will use only the command-line interface. To
+run a graphical application remotely, we have to log in to the server,
+using the <code class="docutils literal notranslate"><span class="pre">-X</span></code> option in <code class="docutils literal notranslate"><span class="pre">ssh</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh -X YourID@andorra.imp.fu-berlin.de
+ssh -X evop-login
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="prompt">
+<h2>Prompt<a class="headerlink" href="#prompt" title="Permalink to this headline">¶</a></h2>
+<p>By default, your prompt will contain <em>the username of the current user</em> followed by a symbol <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>,
+<em>the host name</em> followed by <code class="docutils literal notranslate"><span class="pre">:</span></code>
+and <em>the current working directory</em>, and it usually ends with the symbol <code class="docutils literal notranslate"><span class="pre">$</span></code>.</p>
+<p><img alt="Linux promptexplained" src="docs/C:/Users/vladi/Nextcloud/Nowick_Lab/Master_course_Bioinformatics_for_Biologists/SoSe2020/linux-bash-prompt.jpg" />{width=”100%”}
+For those who are curious, you can <a class="reference external" href="https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/">customize your bash
+prompt</a>
+by changing the color and information contained in it.</p>
+<p>Sometimes you will find chunks of code online <strong>with prompt</strong>, but be
+sure that you remove it when you are typing or pasting the code into the
+terminal.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="syntax-of-a-shell-command">
+<h2>Syntax of a shell command<a class="headerlink" href="#syntax-of-a-shell-command" title="Permalink to this headline">¶</a></h2>
+<p>The general syntax of a shell command follows this logic:</p>
+<p>[<strong>Verb</strong>]{style=”color: red;”} [<strong>Options</strong>]{style=”color: blue;”}
+[<strong>Arguments</strong>]{style=”color: green;”}</p>
+<ul class="simple">
+<li><p>[<strong>A verb</strong>]{style=”color: red;”} is the name of a command</p></li>
+<li><p>[<strong>Options</strong>]{style=”color: blue;”} are command modifiers proceeded
+by <code class="docutils literal notranslate"><span class="pre">+</span></code> or <code class="docutils literal notranslate"><span class="pre">-</span></code></p></li>
+<li><p>[<strong>Arguments</strong>]{style=”color: green;”} give more information to the
+command such as the exact location of the input file, or the exact
+location where the output file should be saved. Sometimes options
+and arguments are referred to as <strong>parameters</strong>. A command can be
+called with more than one option and more than one argument: but a
+command doesn’t always require an argument or an option.</p></li>
+</ul>
+<p>So by typing:</p>
+<p>[<strong>ls</strong>]{style=”color: red;”} [<strong>-F</strong>]{style=”color: blue;”}
+[<strong>/</strong>]{style=”color: green;”}</p>
+<p>we are calling <strong>command</strong> <code class="docutils literal notranslate"><span class="pre">ls</span></code> with an <strong>option</strong> <code class="docutils literal notranslate"><span class="pre">-F</span></code> and an
+<strong>argument</strong> <code class="docutils literal notranslate"><span class="pre">/</span></code>. Each part is separated by <strong>spaces</strong>: if you omit the
+space between <code class="docutils literal notranslate"><span class="pre">ls</span></code> and <code class="docutils literal notranslate"><span class="pre">-F</span></code> the shell will look for a command called
+<code class="docutils literal notranslate"><span class="pre">ls-F</span></code>, which doesn’t exist. Also, <strong>capitalization</strong> is important. For
+example, <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span></code> will display the size of files and directories
+alongside the names, while <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-S</span></code> will sort the files and directories
+by size, while <code class="docutils literal notranslate"><span class="pre">LS</span> <span class="pre">-S</span></code> will produce an error.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>ls -F ~
+</pre></div>
+</div>
+<p>The command above will give us a listing of files and directories in our
+<em>home directory</em> <code class="docutils literal notranslate"><span class="pre">~</span></code>.</p>
+<div class="section" id="command-options">
+<h3>Command options<a class="headerlink" href="#command-options" title="Permalink to this headline">¶</a></h3>
+<p>Command <strong>options</strong> either start with a single dash <code class="docutils literal notranslate"><span class="pre">-</span></code>
+(single-character options) or two dashes <code class="docutils literal notranslate"><span class="pre">--</span></code> (long options), and they
+are changing the behavior of a command. Single-character options use a
+space as a separator from their parameter, while the long options use
+‘=’(e.g. single-character option: <code class="docutils literal notranslate"><span class="pre">-0</span> <span class="pre">value</span></code>; long option:
+<code class="docutils literal notranslate"><span class="pre">--option=value</span></code>). We can combine single-character options like this:
+<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-ltr</span></code> where <code class="docutils literal notranslate"><span class="pre">-ltr</span></code> are 3 different options <code class="docutils literal notranslate"><span class="pre">-l</span></code>, <code class="docutils literal notranslate"><span class="pre">-t</span></code>, and <code class="docutils literal notranslate"><span class="pre">-r</span></code>.
+Some commands have a lot of options, such as <code class="docutils literal notranslate"><span class="pre">ls</span></code>, and thus it can be
+tricky finding the right option.</p>
+</div>
+<div class="section" id="command-arguments">
+<h3>Command arguments<a class="headerlink" href="#command-arguments" title="Permalink to this headline">¶</a></h3>
+<p><strong>Arguments</strong> tell the command what to operate on (e.g. files and
+directories). In other words, we can define an argument as the input
+given to a command, which can be in the form of a <em>file</em> or <em>directory</em>
+(which also can be set as a <em>path</em>).</p>
+<p>By default, most of the commands would perform the action in the
+<em>current directory</em> (also referred to as <code class="docutils literal notranslate"><span class="pre">.</span></code>). For example, if we type
+only <code class="docutils literal notranslate"><span class="pre">ls</span></code>, it gives us a list of files and directories in our current
+directory, thus there is no difference in <code class="docutils literal notranslate"><span class="pre">ls</span></code> and <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">.</span></code>.</p>
+<p>To see the contents of another directory, we have to add its name or its
+path as the command argument:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>ls -l /opt/evop/public/BIOINFORMATICS/unix_intro/exercises
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>total 60
+-rwxr-xr-x 1 k00354837 bcp_evopchairs  2642 Apr 19 15:17 01_browsing_textfiles.txt
+-rwxr-xr-x 1 k00354837 bcp_evopchairs  2642 Apr 19 15:17 1_browsing_textfiles.txt
+-rwxr-xr-x 1 k00354837 bcp_evopchairs 37663 Apr 19 15:17 2_searching_patterns.txt
+drwxr-xr-x 2 k00354837 bcp_evopchairs  4096 Apr 19 15:17 creatures
+drwxr-xr-x 2 k00354837 bcp_evopchairs  4096 Apr 19 15:17 genes
+drwxr-xr-x 2 k00354837 bcp_evopchairs  4096 Apr 19 15:17 multiplefiles
+</pre></div>
+</div>
+<p>::: {.alert .alert-info role=”alert”}
+<strong>TIP:</strong></p>
+<hr class="docutils" />
+<p>Let the <code class="docutils literal notranslate"><span class="pre">Tab</span></code> key do its magic with auto-completion! We can use the
+<code class="docutils literal notranslate"><span class="pre">Tab</span></code> key on the keyboard to automatically complete a <em>command</em>,
+<em>directory</em>, or <em>file</em> name. <br />For example, try the following:
+<br />Type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/o</span></code> and then press the <code class="docutils literal notranslate"><span class="pre">Tab</span></code>, add <code class="docutils literal notranslate"><span class="pre">e</span></code> then press the
+<code class="docutils literal notranslate"><span class="pre">Tab</span></code>, add <code class="docutils literal notranslate"><span class="pre">p</span></code> then press the <code class="docutils literal notranslate"><span class="pre">Tab</span></code>, add <code class="docutils literal notranslate"><span class="pre">B</span></code> then press the <code class="docutils literal notranslate"><span class="pre">Tab</span></code> 3
+times and then press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> <br />Now type <code class="docutils literal notranslate"><span class="pre">he</span></code> and then press the
+<code class="docutils literal notranslate"><span class="pre">Tab</span></code> <strong>twice</strong>. You will get the list of commands beginning with
+<strong>“he”</strong>.
+:::</p>
+<hr class="docutils" />
+<p><br /><br /><br /></p>
+</div>
+</div>
+<div class="section" id="getting-help">
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+<p>Often we would need to find out how to use a command and what options it
+accepts. We can do that in several ways:</p>
+<p><br /><br /></p>
+<div class="section" id="help-option-help">
+<h3>Help option <code class="docutils literal notranslate"><span class="pre">--help</span></code><a class="headerlink" href="#help-option-help" title="Permalink to this headline">¶</a></h3>
+<p>We can pass a <code class="docutils literal notranslate"><span class="pre">--help</span></code> option to the command, such as:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>ls --help
+</pre></div>
+</div>
+<details>
+<summary>
+<p><code class="docutils literal notranslate"><span class="pre">Click</span> <span class="pre">here</span> <span class="pre">to</span> <span class="pre">see</span> <span class="pre">the</span> <span class="pre">output:</span></code></p>
+</summary>
+</details>
+<p><br /><br /></p>
+<p><br /><br /></p>
+</div>
+<div class="section" id="manuals-man">
+<h3>Manuals <code class="docutils literal notranslate"><span class="pre">man</span></code><a class="headerlink" href="#manuals-man" title="Permalink to this headline">¶</a></h3>
+<p>We can read its manual with <code class="docutils literal notranslate"><span class="pre">man</span></code>, such as:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>man ls
+</pre></div>
+</div>
+<details>
+<summary>
+<p><code class="docutils literal notranslate"><span class="pre">Click</span> <span class="pre">here</span> <span class="pre">to</span> <span class="pre">see</span> <span class="pre">the</span> <span class="pre">output:</span></code></p>
+</summary>
+</details>
+<p><br /><br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">man</span></code> will turn your terminal into a page with a description of the <code class="docutils literal notranslate"><span class="pre">ls</span></code>
+command and its options and, if you’re lucky, some examples of how to
+use it.</p>
+<p>To navigate through the <code class="docutils literal notranslate"><span class="pre">man</span></code> pages, you may use ↑ and ↓ to move
+line-by-line, or try <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">Space</span></code> to skip up and down by a full page.
+To search for a character or word in the <code class="docutils literal notranslate"><span class="pre">man</span></code> pages, use <code class="docutils literal notranslate"><span class="pre">/</span></code> followed
+by the character or word you are searching for. Sometimes a search will
+result in multiple hits. If so, you can move between hits using <code class="docutils literal notranslate"><span class="pre">N</span></code> (for
+moving to the <em>next</em> instance) and <code class="docutils literal notranslate"><span class="pre">Shift+N</span></code> (for moving backward).</p>
+<p>To <em>quit</em> the <code class="docutils literal notranslate"><span class="pre">man</span></code> pages, press <code class="docutils literal notranslate"><span class="pre">Q</span></code>.</p>
+<p><br /><br /></p>
+</div>
+<div class="section" id="google-it">
+<h3>Google it!<a class="headerlink" href="#google-it" title="Permalink to this headline">¶</a></h3>
+<p>And finally, the most important way to find help for commands is
+searching it on the internet! Google it!</p>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">unix_intro</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, bajicv.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/docs/starting.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

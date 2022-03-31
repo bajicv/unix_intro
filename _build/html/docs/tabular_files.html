@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with tabular files &#8212; unix_intro v1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="working-with-tabular-files">
+<h1>Working with tabular files<a class="headerlink" href="#working-with-tabular-files" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">awk</span></code> provides a scripting language for text processing.</p>
+<p>There are three variations of <code class="docutils literal notranslate"><span class="pre">awk</span></code>:<br /></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">awk</span></code> (the very old and original from AT&amp;T),<br /></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nawk</span></code> (a newer, improved version from AT&amp;T), and<br /></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gawk</span></code> (the Free Software foundation’s version). All of <code class="docutils literal notranslate"><span class="pre">awk</span></code>’s features are in <code class="docutils literal notranslate"><span class="pre">nawk</span></code> and <code class="docutils literal notranslate"><span class="pre">gawk</span></code>, but they do have some incompatibilities.<br /></p></li>
+</ol>
+<p><em>Why is <code class="docutils literal notranslate"><span class="pre">awk</span></code>so important?</em> <br /> With <code class="docutils literal notranslate"><span class="pre">awk</span></code> scripting language, we can
+define variables, use string and arithmetic operators, use control flow
+and loops, generate formatted reports… But here we will focus on using
+<code class="docutils literal notranslate"><span class="pre">awk</span></code> for working with tabular files as <code class="docutils literal notranslate"><span class="pre">awk</span></code> allows us to search and
+manipulate tabular files quite easily. Many Unix utilities generate
+<em>rows</em> and <em>columns</em> of information, and <code class="docutils literal notranslate"><span class="pre">awk</span></code> is an excellent tool for
+processing these rows and columns, and it is easier to use it than most
+conventional programming languages. With <code class="docutils literal notranslate"><span class="pre">awk</span></code>, we can extract specific
+columns of a file, do numerical operations, change the order of the
+columns, and many others.</p>
+<hr class="docutils" />
+<div class="section" id="example-of-tabular-file">
+<h2>Example of tabular file<a class="headerlink" href="#example-of-tabular-file" title="Permalink to this headline">¶</a></h2>
+<p>The advantage of a command-line tool over graphical software is that the
+memory footprint is much lower. So we can access and modify large files
+in a fraction of the time that it would take with Excel. Not even to
+mention that some of the files which you might be working on will be
+much bigger than Excel can handle. So get ready to learn basics with
+<code class="docutils literal notranslate"><span class="pre">awk</span></code>!</p>
+<p>First, let’s take a look at the example of a tabular file (e.g. “GFF3””
+format). We can find it in <code class="docutils literal notranslate"><span class="pre">~/unix_intro/exercises/genes</span></code>.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/genes
+head chr8.gff
+</pre></div>
+</div>
+<p>As you can see, <code class="docutils literal notranslate"><span class="pre">.gff</span></code> (standing for General Feature Format) is a
+tab-separated file. You can find GFF format specifications defined
+<a class="reference external" href="https://genome.ucsc.edu/FAQ/FAQformat.html#format3">here</a>, but in
+short:</p>
+<ul class="simple">
+<li><p><strong>col1</strong> contains chromosome name,</p></li>
+<li><p><strong>col2</strong> describes the tool or resource that generated the
+annotation,</p></li>
+<li><p><strong>col3</strong> describes the type of feature (e.g. gene, transcript, exon,
+TF binding site, Histone Acetylation mark, etc…</p></li>
+<li><p><strong>col4</strong> and <strong>col5</strong> contain genomic coordinates (start and end)</p></li>
+<li><p><strong>col9</strong> column contains several fields, separated by a semicolon
+<code class="docutils literal notranslate"><span class="pre">;</span></code></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="basic-awk-syntax">
+<h2>Basic <code class="docutils literal notranslate"><span class="pre">awk</span></code> syntax<a class="headerlink" href="#basic-awk-syntax" title="Permalink to this headline">¶</a></h2>
+<p>The basic <code class="docutils literal notranslate"><span class="pre">awk</span></code> syntax is the following:
+<code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">options</span> <span class="pre">'selection</span> <span class="pre">_criteria</span> <span class="pre">{action</span> <span class="pre">}'</span> <span class="pre">input-file</span></code></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="awk-options">
+<h2><code class="docutils literal notranslate"><span class="pre">awk</span></code> options<a class="headerlink" href="#awk-options" title="Permalink to this headline">¶</a></h2>
+<p>Some of the options we can give to <code class="docutils literal notranslate"><span class="pre">awk</span></code> can be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-F</span> <span class="pre">fs</span></code> To specify a file <strong>separator(s)</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">file</span></code> To specify a <strong>file</strong> that contains <code class="docutils literal notranslate"><span class="pre">awk</span></code> script.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">var=value</span></code> To declare a <strong>variable</strong>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">awk</span></code> is quite smart at recognizing the field separator, and by default
+assumes they are separated by <code class="docutils literal notranslate"><span class="pre">spaces</span></code> or <code class="docutils literal notranslate"><span class="pre">Tabs</span></code>. In case we would like
+to use some other characters as separators we can define them with
+option <code class="docutils literal notranslate"><span class="pre">-F</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">-F','</span></code> indicated that separator is comma <code class="docutils literal notranslate"><span class="pre">,</span></code>).</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="using-awk-variables-to-extract-specific-columns">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">awk</span></code> variables to extract specific columns<a class="headerlink" href="#using-awk-variables-to-extract-specific-columns" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">awk</span></code> assigns some variables for each column of the file, and we can
+refer to them with the dollar sign (<code class="docutils literal notranslate"><span class="pre">$</span></code>) followed by the number of
+column (e.g. <code class="docutils literal notranslate"><span class="pre">$1</span></code> would be the first column, <code class="docutils literal notranslate"><span class="pre">$2</span></code> the second, and so on,
+while <code class="docutils literal notranslate"><span class="pre">$0</span></code> refers to all columns).</p>
+<p>Now, let’s check this example and see how <code class="docutils literal notranslate"><span class="pre">awk</span></code> processes it:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/genes
+awk &#39;{print $1}&#39; chr8.gff
+</pre></div>
+</div>
+<p>The above example prints the first column of the file <code class="docutils literal notranslate"><span class="pre">chr8.gff</span></code>.</p>
+<p>Sometimes the separator in some files is not <code class="docutils literal notranslate"><span class="pre">Space</span></code> nor <code class="docutils literal notranslate"><span class="pre">Tab</span></code> but
+something else. We can use <code class="docutils literal notranslate"><span class="pre">-F</span></code> option to specify separators, or we can
+use it to extract part of a file after some special character. Let’s
+assume we wanna extract gene_id which is contained in the 9th column of
+the file <code class="docutils literal notranslate"><span class="pre">chr8.gff</span></code>. If we look carefully this information is contained
+between <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">;</span></code> so we can use them as separators to extract it from
+the file. As we mentioned before, we can specify separators using <code class="docutils literal notranslate"><span class="pre">-F</span></code>
+option, and if we want to specify more than one we can separate them
+with <code class="docutils literal notranslate"><span class="pre">|</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">-F&quot;=|;&quot;</span></code>):</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/genes
+awk -F&quot;=|;&quot; &#39;{print $2}&#39; chr8.gff
+</pre></div>
+</div>
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong></p>
+<hr class="docutils" />
+<p>Using the above command as a template, how would you extract column with
+the symbol?</p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p>We can simply modify the column we want to print out:
+<code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">-F&quot;=|;&quot;</span> <span class="pre">'{print</span> <span class="pre">$4}'</span> <span class="pre">chr8.gff</span></code></p>
+</details>
+:::
+</div>
+<div class="section" id="conditional-expressions-in-awk">
+<h2>Conditional expressions in <code class="docutils literal notranslate"><span class="pre">awk</span></code><a class="headerlink" href="#conditional-expressions-in-awk" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>Is equal</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>Is not equal to</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Is greater than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>Is greater than or equal to</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>Is less than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>Is less than or equal to</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">awk</span></code> scripting language supports <strong>if conditional statement</strong>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;{if ($4 &gt; 146098183) print $0}&#39; chr8.gff
+</pre></div>
+</div>
+<p>We can change the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to a <strong>condition</strong> in order to shorten
+the code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;$4 &gt; 146098183 {print $0}&#39; chr8.gff | head
+</pre></div>
+</div>
+</div>
+<div class="section" id="and-or-not">
+<h2>And/Or/Not<a class="headerlink" href="#and-or-not" title="Permalink to this headline">¶</a></h2>
+<p>We can combine conditional expressions with the “or” or “and” operators:
+<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">||</span></code>, as well as the unary not operator: <code class="docutils literal notranslate"><span class="pre">!</span></code>.</p>
+<ul class="simple">
+<li><p>AND (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)</p></li>
+<li><p>OR (<code class="docutils literal notranslate"><span class="pre">||</span></code>)\</p></li>
+<li><p>NOT (<code class="docutils literal notranslate"><span class="pre">!</span></code>)</p></li>
+</ul>
+<p>Now imagine that we need to extract the lines belonging to chromosome 8,
+between the coordinates 100000 and 200000. We can do that like this:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/genes
+awk &#39;$1==&quot;chr8&quot; &amp;&amp; $4 &gt; 100000 &amp;&amp; $5 &lt; 200000&#39; chr8.gff
+</pre></div>
+</div>
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong> <br /></p>
+<hr class="docutils" />
+<p>Using the above command as a template, print all the lines between
+5000000 and 10000000.</p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p><code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">'$4</span> <span class="pre">&gt;</span> <span class="pre">5000000</span> <span class="pre">&amp;&amp;</span> <span class="pre">$5</span> <span class="pre">&lt;</span> <span class="pre">10000000'</span> <span class="pre">chr8.gff</span></code></p>
+</details>
+:::
+</div>
+<hr class="docutils" />
+<div class="section" id="doing-operations-with-columns-awk">
+<h2>Doing operations with columns <code class="docutils literal notranslate"><span class="pre">awk</span></code><a class="headerlink" href="#doing-operations-with-columns-awk" title="Permalink to this headline">¶</a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">awk</span></code> to do algebraic operations on columns.</p>
+<p>To illustrate let’s print <em>the first column</em> and <em>the sum of the fourth
+and third</em>. We can <strong>pipe</strong> the output to <code class="docutils literal notranslate"><span class="pre">head</span></code> or <code class="docutils literal notranslate"><span class="pre">less</span></code>, to make it
+easier to visualize:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/genes
+awk &#39;{print $1, $5-$4}&#39; chr8.gff | head
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="regular-expressions-in-awk">
+<h2>Regular expressions in <code class="docutils literal notranslate"><span class="pre">awk</span></code><a class="headerlink" href="#regular-expressions-in-awk" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">awk</span></code> can also be used to search by a <em>regular expression</em>. The syntax
+for using regular expressions to match lines in <code class="docutils literal notranslate"><span class="pre">awk</span></code> is:
+<code class="docutils literal notranslate"><span class="pre">word</span> <span class="pre">~</span> <span class="pre">/match/</span></code>, while the inverse of that is not matching a pattern:
+<code class="docutils literal notranslate"><span class="pre">word</span> <span class="pre">!~</span> <span class="pre">/match/</span></code></p>
+<p>For example, the following code will print all the lines in which the
+symbol starts with <em>“MIR”</em>:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/genes
+awk &#39;$9 ~ /symbol=MIR/ {print $0}&#39; chr8.gff | head
+</pre></div>
+</div>
+<p>Now let’s remove the header of the file:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises/genes
+awk &#39;$0 !~ /#/&#39; chr8.gff | head
+</pre></div>
+</div>
+<p>or even shorter: <code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">'!/#/'</span> <span class="pre">chr8.gff</span></code></p>
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong> <br /></p>
+<hr class="docutils" />
+<p>a)  Calculate the <strong>length</strong> of the gene <strong>POU5F1B</strong> in <code class="docutils literal notranslate"><span class="pre">chr8.gff</span></code> file.
+<br />b) Once you calculated it, find the gene in <code class="docutils literal notranslate"><span class="pre">chr8.gff</span></code> file
+whose <strong>gene_id</strong> is equal to that number (i.e. length of POU5F1B).</p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p><br />a) for <code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">'$9</span> <span class="pre">~</span> <span class="pre">/POU5F1B/</span> <span class="pre">{print</span> <span class="pre">$5-$4}'</span> <span class="pre">chr8.gff</span></code> the output
+is: <strong>1584</strong> <br />b) Than we run
+<code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">'$9</span> <span class="pre">~</span> <span class="pre">/gene_id=1584/</span> <span class="pre">{print</span> <span class="pre">$0}'</span> <span class="pre">chr8.gff</span></code> and find that gene
+CYP11B1 had gene_id=1584</p>
+</details>
+:::
+<hr class="docutils" />
+<p><br /><br /><br /></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">unix_intro</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, bajicv.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/docs/tabular_files.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

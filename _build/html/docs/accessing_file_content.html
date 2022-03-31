@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessing the content of a file &#8212; unix_intro v1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="accessing-the-content-of-a-file">
+<h1>Accessing the content of a file<a class="headerlink" href="#accessing-the-content-of-a-file" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we will get familiar with a few commands (<code class="docutils literal notranslate"><span class="pre">head</span></code>,
+<code class="docutils literal notranslate"><span class="pre">tail</span></code>, <code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">wc</span></code>, <code class="docutils literal notranslate"><span class="pre">less</span></code>) that allow us to access the content of a
+file.</p>
+<div class="section" id="output-the-first-part-of-files-head">
+<h2>Output the first part of files <code class="docutils literal notranslate"><span class="pre">head</span></code><a class="headerlink" href="#output-the-first-part-of-files-head" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">head</span></code> command writes the <strong>first</strong> ten lines of a file to the
+screen.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises
+head 1_browsing_textfiles.txt
+</pre></div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">-n</span></code> option in <code class="docutils literal notranslate"><span class="pre">head</span></code> command to define a number of first
+lines to be printed out. Let’s use <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">40</span></code> option to print the first 40
+lines of this file:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises
+head -n 40 1_browsing_textfiles.txt
+</pre></div>
+</div>
+<p>The letter <code class="docutils literal notranslate"><span class="pre">n</span></code> does not even need to be used at all. Just the hyphen <code class="docutils literal notranslate"><span class="pre">-</span></code>
+and the integer (with no intervening space) are sufficient to tell
+<code class="docutils literal notranslate"><span class="pre">head</span></code> how many lines to return. Thus, the following would produce the
+same result as the above commands:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises
+head -40 1_browsing_textfiles.txt
+</pre></div>
+</div>
+<p>::: {.alert .alert-info role=”alert”}
+<strong>TIP:</strong></p>
+<hr class="docutils" />
+<p>Some commands will expect from us a file which to process. But what
+happens if we do not give it a filename? For example, what if we type
+<code class="docutils literal notranslate"><span class="pre">head</span></code> and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>, but do not type anything else after the
+command. Since it doesn’t have any filenames, <code class="docutils literal notranslate"><span class="pre">head</span></code> assumes it is
+supposed to process input given at the command prompt, so it just sits
+there and waits for us to give it some data interactively. From the
+outside, though, all we see is it sitting there: the command doesn’t
+appear to do anything.</p>
+<p>If you make this kind of mistake, you can escape out of this state by
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">C</span></code> (i.e. holding down the <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> key (or <code class="docutils literal notranslate"><span class="pre">Strg</span></code> on German
+keyboards) and typing the letter <code class="docutils literal notranslate"><span class="pre">C</span></code> (standing for “cancel”) once and
+letting go of the <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> key). Or if you are using Mac: <code class="docutils literal notranslate"><span class="pre">Command</span></code>+<code class="docutils literal notranslate"><span class="pre">.</span></code>.
+:::</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="output-the-last-part-of-files-tail">
+<h2>Output the last part of files <code class="docutils literal notranslate"><span class="pre">tail</span></code><a class="headerlink" href="#output-the-last-part-of-files-tail" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">tail</span></code> command writes the <strong>last</strong> ten lines of a file to the
+screen. Same as for the <code class="docutils literal notranslate"><span class="pre">head</span></code>, we can specify how many lines we want
+<code class="docutils literal notranslate"><span class="pre">tail</span></code> to print out. So, let’s print last 12 lines of the same file:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises
+tail -12 1_browsing_textfiles.txt
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="concatenate-files-and-print-on-the-standard-output-cat">
+<h2>Concatenate files and print on the standard output <code class="docutils literal notranslate"><span class="pre">cat</span></code><a class="headerlink" href="#concatenate-files-and-print-on-the-standard-output-cat" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">cat</span></code> (concatenate) command can be used to display the contents of a
+file on the screen. The name is derived from its function to
+<em>concatenate</em> files.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises
+cat 1_browsing_textfiles.txt
+</pre></div>
+</div>
+<p>As you can see, the file is longer than the size of the window, so it
+scrolls past making it unreadable.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cat</span></code> command can be very useful to <strong>concatenate</strong> multiple files.
+Let’s concatenate two text files and write them to a new file:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cd ~/unix_intro/exercises
+cat 1_browsing_textfiles.txt 2_searching_patterns.txt &gt; new_cat_1_2_file.txt
+</pre></div>
+</div>
+<p>We can also <strong>append</strong> the contents of <code class="docutils literal notranslate"><span class="pre">2_searching_patterns.txt</span></code> to
+<code class="docutils literal notranslate"><span class="pre">01_browsing_textfiles.txt</span></code>:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>cat 2_searching_patterns.txt &gt;&gt; 01_browsing_textfiles.txt
+</pre></div>
+</div>
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong> <br /></p>
+<hr class="docutils" />
+<p>Which option of the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command you will use to find out: <br />a) how
+many lines there are in <code class="docutils literal notranslate"><span class="pre">1_browsing_textfiles.txt</span></code> including blank
+likes? <br />b) how many lines there are in <code class="docutils literal notranslate"><span class="pre">1_browsing_textfiles.txt</span></code>
+excluding blank likes?</p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p><br />a) <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">-n</span> <span class="pre">1_browsing_textfiles.txt</span></code> gives 81 lines in total
+<br />b) <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">-b</span> <span class="pre">1_browsing_textfiles.txt</span></code> gives 57 non-blank lines</p>
+</details>
+<p>:::</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="word-count-wc">
+<h2>Word count <code class="docutils literal notranslate"><span class="pre">wc</span></code><a class="headerlink" href="#word-count-wc" title="Permalink to this headline">¶</a></h2>
+<p>Besides doing <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">-n</span></code> we can use very handy <code class="docutils literal notranslate"><span class="pre">wc</span></code> command, short for
+<em>word count</em>.</p>
+<p>To do a <strong>word count</strong> on <code class="docutils literal notranslate"><span class="pre">1_browsing_textfiles.txt</span></code> we can type:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>wc -w 1_browsing_textfiles.txt
+</pre></div>
+</div>
+<p>To do a <strong>line count</strong> on <code class="docutils literal notranslate"><span class="pre">1_browsing_textfiles.txt</span></code> we can type:</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>wc -l 1_browsing_textfiles.txt
+</pre></div>
+</div>
+<p>::: {.alert .alert-warning}
+<strong>TASK:</strong> <br /></p>
+<hr class="docutils" />
+<p>Which option of the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command you will use to find out how many
+<strong>characters</strong> there are in <code class="docutils literal notranslate"><span class="pre">1_browsing_textfiles.txt</span></code>?</p>
+<hr class="docutils" />
+<details>
+<summary>
+<p><strong>Click for Answer</strong></p>
+</summary>
+<p><br /> <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-m</span> <span class="pre">1_browsing_textfiles.txt</span></code> gives 2642 characters.</p>
+</details>
+:::
+</div>
+<hr class="docutils" />
+<div class="section" id="view-the-content-of-a-text-file-one-screen-at-a-time-less">
+<h2>View the content of a text file one screen at a time <code class="docutils literal notranslate"><span class="pre">less</span></code><a class="headerlink" href="#view-the-content-of-a-text-file-one-screen-at-a-time-less" title="Permalink to this headline">¶</a></h2>
+<p>The command <code class="docutils literal notranslate"><span class="pre">less</span></code> writes the contents of a file onto the screen a page
+at a time. Thus, <code class="docutils literal notranslate"><span class="pre">less</span></code> allows browsing the contents of a file,
+read-only, in a modality similar to what we saw with the <code class="docutils literal notranslate"><span class="pre">man</span></code> pages.</p>
+<p>We can use ↑, ↓, ←, → to move line-by-line and left and right, or
+<code class="docutils literal notranslate"><span class="pre">Space</span></code> to skip up and down by a full page. To search for a pattern in
+the <code class="docutils literal notranslate"><span class="pre">less</span></code> pages, we can use <code class="docutils literal notranslate"><span class="pre">/</span></code> followed by the pattern we are
+searching for. Sometimes a search will result in multiple hits. If so,
+you can move between hits using <code class="docutils literal notranslate"><span class="pre">N</span></code> (for <em>next</em>, for moving to next
+instance) and <code class="docutils literal notranslate"><span class="pre">P</span></code> (for moving to the <em>previous</em> instance). To <em>quit</em> the
+<code class="docutils literal notranslate"><span class="pre">less</span></code>, press <code class="docutils literal notranslate"><span class="pre">Q</span></code>.</p>
+<p>Now, open the <code class="docutils literal notranslate"><span class="pre">1_browsing_textfiles.txt</span></code> file with <code class="docutils literal notranslate"><span class="pre">less</span></code>, scroll down
+the file and follow the instructions in the file.</p>
+<div class="highlight-{bash, notranslate"><div class="highlight"><pre><span></span>less 1_browsing_textfiles.txt
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">unix_intro</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, bajicv.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/docs/accessing_file_content.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
