@@ -1,6 +1,9 @@
 # Starting UNIX terminal
 
-## Opening terminal {.tabset}
+## Opening terminal
+
+------------------------------------------------------------------------
+
 
 ### Windows
 
@@ -27,6 +30,8 @@ Windows OS to use Unix like terminal! Here are several options:
     environment. You can execute commands on your computer, or connect
     to a remote server
 
+------------------------------------------------------------------------
+
 ### Mac
 
 The Mac command-line is a program called **Terminal**. It is located in
@@ -35,12 +40,12 @@ the `/Applications/Utilities/` folder. To find it, go to your
 `Utilities`. Go inside, and one of the applications listed is called
 `Terminal`. Double-click that application to open it.
 
+------------------------------------------------------------------------
+
 ### Linux
 
 To find it, click on `Applications` and search for `Terminal` or
 `Konsole`.
-
-## 
 
 Go ahead and open the **command-line**. When you open it you will see a
 new window, with a simple
@@ -67,7 +72,7 @@ and then we have to type:
     ssh YourID@andorra.imp.fu-berlin.de
     ssh evop-login
 
-Executing **graphical** applications remotely is very demanding for the
+Executing **graphical** applications remotely is very demanding for the 
 network, so by default, we will use only the command-line interface. To
 run a graphical application remotely, we have to log in to the server,
 using the `-X` option in `ssh`:
@@ -80,14 +85,11 @@ using the `-X` option in `ssh`:
 ## Prompt
 
 By default, your prompt will contain *the username of the current user* followed by a symbol `@`,
-*the host name* followed by `:` 
-and *the current working directory*, and it usually ends with the symbol `$`.
+*the host name* followed by `:` and *the current working directory*, and it usually ends with the symbol `$`.
 
-![Linux prompt
-explained](C:/Users/vladi/Nextcloud/Nowick_Lab/Master_course_Bioinformatics_for_Biologists/SoSe2020/linux-bash-prompt.jpg){width="100%"}
-For those who are curious, you can [customize your bash
-prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)
-by changing the color and information contained in it.
+![Linux prompt explained](https://linuxconfig.org/images/linux-bash-prompt.jpg){width="100%"}
+
+For those who are curious, you can [customize your bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/) by changing the color and information contained in it.
 
 Sometimes you will find chunks of code online **with prompt**, but be
 sure that you remove it when you are typing or pasting the code into the
@@ -97,25 +99,22 @@ terminal.
 
 ## Syntax of a shell command
 
+
 The general syntax of a shell command follows this logic:
 
-[**Verb**]{style="color: red;"} [**Options**]{style="color: blue;"}
-[**Arguments**]{style="color: green;"}
+<span style="color:red">Verb</span> <span style="color:blue">Options</span> <span style="color:green">Arguments</span>
 
--   [**A verb**]{style="color: red;"} is the name of a command
--   [**Options**]{style="color: blue;"} are command modifiers proceeded
+-   <span style="color:red">Verb</span> is the name of a command
+-   <span style="color:blue">Options</span> are command modifiers proceeded
     by `+` or `-`
--   [**Arguments**]{style="color: green;"} give more information to the
+-   <span style="color:green">Arguments</span> give more information to the
     command such as the exact location of the input file, or the exact
     location where the output file should be saved. Sometimes options
     and arguments are referred to as **parameters**. A command can be
     called with more than one option and more than one argument: but a
     command doesn't always require an argument or an option.
 
-So by typing:
-
-[**ls**]{style="color: red;"} [**-F**]{style="color: blue;"}
-[**/**]{style="color: green;"}
+So by typing: <span style="color:red">ls</span> <span style="color:blue">-F</span> <span style="color:green">/</span>
 
 we are calling **command** `ls` with an **option** `-F` and an
 **argument** `/`. Each part is separated by **spaces**: if you omit the
@@ -125,9 +124,7 @@ example, `ls -s` will display the size of files and directories
 alongside the names, while `ls -S` will sort the files and directories
 by size, while `LS -S` will produce an error.
 
-```{bash, echo = T, eval=F}
-ls -F ~
-```
+    ls -F ~
 
 The command above will give us a listing of files and directories in our
 *home directory* `~`.
@@ -159,9 +156,7 @@ directory, thus there is no difference in `ls` and `ls .`.
 To see the contents of another directory, we have to add its name or its
 path as the command argument:
 
-```{bash, echo = T, eval = F}
-ls -l /opt/evop/public/BIOINFORMATICS/unix_intro/exercises
-```
+    ls -l /opt/evop/public/BIOINFORMATICS/unix_intro/exercises
 
     total 60
     -rwxr-xr-x 1 k00354837 bcp_evopchairs  2642 Apr 19 15:17 01_browsing_textfiles.txt
@@ -171,22 +166,15 @@ ls -l /opt/evop/public/BIOINFORMATICS/unix_intro/exercises
     drwxr-xr-x 2 k00354837 bcp_evopchairs  4096 Apr 19 15:17 genes
     drwxr-xr-x 2 k00354837 bcp_evopchairs  4096 Apr 19 15:17 multiplefiles
 
-::: {.alert .alert-info role="alert"}
-<strong>TIP:</strong>
 
-------------------------------------------------------------------------
+!!! tip
 
-Let the `Tab` key do its magic with auto-completion! We can use the
-`Tab` key on the keyboard to automatically complete a *command*,
-*directory*, or *file* name. <br />For example, try the following:
-<br />Type `ls /o` and then press the `Tab`, add `e` then press the
-`Tab`, add `p` then press the `Tab`, add `B` then press the `Tab` 3
-times and then press `Enter` <br />Now type `he` and then press the
-`Tab` **twice**. You will get the list of commands beginning with
-**"he"**.
-:::
+    Let the `Tab` key do its magic with auto-completion! We can use the `Tab` key on the keyboard to automatically complete a *command*, *directory*, or *file* name. <br /><br />
 
-------------------------------------------------------------------------
+!!! example
+    Try the following: 
+    <br />Type `ls /o` and then press the `Tab`, add `e` then press the `Tab`, add `p` then press the `Tab`, add `B` then press the `Tab` 3 times and then press `Enter` <br />Now type `he` and then press the `Tab` **twice**. You will get the list of commands beginning with **"he"**.
+
 
 <br /><br /><br />
 
@@ -201,15 +189,13 @@ accepts. We can do that in several ways:
 
 We can pass a `--help` option to the command, such as:
 
-```{bash, echo = T, eval =F}
-ls --help
-```
+    ls --help
 
 <details>
 
 <summary>
 
-```Click here to see the output:```
+Click here to see the output:
 
 </summary>
 
@@ -344,15 +330,14 @@ or available locally via: info '(coreutils) ls invocation'
 
 We can read its manual with `man`, such as:
 
-```{bash, echo = T, eval =F}
-man ls
-```
+    man ls
+
 
 <details>
 
 <summary>
 
-```Click here to see the output:```
+Click here to see the output:
 
 </summary>
 
