@@ -1,5 +1,7 @@
 site_name: "Introduction to UNIX command-line"
-#site_url: unix-intro.readthedocs.io
+
+markdown_extensions:
+  - admonition
 
 nav:
     - Index: index.md
