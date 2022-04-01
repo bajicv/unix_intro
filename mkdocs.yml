@@ -1,4 +1,5 @@
 site_name: "Introduction to UNIX command-line"
+#site_url: unix-intro.readthedocs.io
 
 nav:
     - Index: index.md
@@ -19,6 +20,5 @@ nav:
     - Screen manager: screen.md
     - Other useful Unix commands: extra.md
     - References: references.md
-
 
 theme: readthedocs
