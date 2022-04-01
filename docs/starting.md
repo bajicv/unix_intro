@@ -116,18 +116,12 @@ The general syntax of a shell command follows this logic:
 
 So by typing: <span style="color:red">ls</span> <span style="color:blue">-F</span> <span style="color:green">/</span>
 
-we are calling **command** `ls` with an **option** `-F` and an
-**argument** `/`. Each part is separated by **spaces**: if you omit the
-space between `ls` and `-F` the shell will look for a command called
-`ls-F`, which doesn't exist. Also, **capitalization** is important. For
-example, `ls -s` will display the size of files and directories
-alongside the names, while `ls -S` will sort the files and directories
-by size, while `LS -S` will produce an error.
+we are calling **command** `ls` with an **option** `-F` and an **argument** `/`. Each part is separated by **spaces**: if you omit the space between `ls` and `-F` the shell will look for a command called `ls-F`, which doesn't exist. Also, **capitalization** is important. For example, `ls -s` will display the size of files and directories alongside the names, while `ls -S` will sort the files and directories by size, while `LS -S` will produce an error. 
 
     ls -F ~
 
-The command above will give us a listing of files and directories in our
-*home directory* `~`.
+The command above will give us a listing of files and directories in our *home directory* `~`.
+
 
 ### Command options
 
@@ -175,15 +169,12 @@ path as the command argument:
     Try the following: 
     <br />Type `ls /o` and then press the `Tab`, add `e` then press the `Tab`, add `p` then press the `Tab`, add `B` then press the `Tab` 3 times and then press `Enter` <br />Now type `he` and then press the `Tab` **twice**. You will get the list of commands beginning with **"he"**.
 
-
-<br /><br /><br />
+------------------------------------------------------------------------ 
 
 ## Getting help
 
 Often we would need to find out how to use a command and what options it
 accepts. We can do that in several ways:
-
-<br /><br />
 
 ### Help option `--help`
 
@@ -193,11 +184,7 @@ We can pass a `--help` option to the command, such as:
 
 <details>
 
-<summary>
-
-Click here to see the output:
-
-</summary>
+<summary> Click here to see the output: </summary>
 
 ```{}
 Usage: ls [OPTION]... [FILE]...
@@ -320,9 +307,7 @@ Full documentation at: <https://www.gnu.org/software/coreutils/ls>
 or available locally via: info '(coreutils) ls invocation'
 ```
 
-</details>
-
-<br /><br />
+</details> 
 
 <br /><br />
 
@@ -376,11 +361,13 @@ moving to the *next* instance) and `Shift+N` (for moving backward).
 
 To *quit* the `man` pages, press `Q`.
 
-<br /><br />
+<br />
 
 ### Google it!
 
 And finally, the most important way to find help for commands is
 searching it on the internet! Google it!
+
+![Google it](https://media.darpanmagazine.com/library/uploads/news/content/google-it2.jpg){width="100%"}
 
 ------------------------------------------------------------------------
