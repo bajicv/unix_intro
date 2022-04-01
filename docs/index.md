@@ -1,0 +1,21 @@
+# Index
+
+nav:
+    - Index: index.md
+    - Background: background.md
+    - Starting UNIX terminal: starting.md
+    - Navigating Files and Directories: navigating.md
+    - Making Files and Directories: making_files_and_dirs.md
+    - Copying files and directories locally and remotely: cp_scp.md
+    - Moving, renaming and removing files and directories: mv.md
+    - Accessing the content of a file: accessing_file_content.md
+    - Pipes and Filters: pipes_filters.md
+    - Wildcards and Regular Expressions (regex): regex.md
+    - Print lines matching a pattern: grep.md
+    - Working with tabular files: tabular_files.md
+    - Loops: loops.md
+    - Shell Scripts: scripts.md
+    - Change file mode: chmod.md
+    - Screen manager: screen.md
+    - Other useful Unix commands: extra.md
+    - References: references.md
