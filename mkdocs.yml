@@ -1,10 +1,14 @@
 site_name: "Introduction to UNIX command-line"
 
+site_author: "bajicv"
+
 markdown_extensions:
   - admonition
-
+  - attr_list
+  - md_in_html
+  
 nav:
-    - Index: index.md
+    - Home: index.md
     - Background: background.md
     - Starting UNIX terminal: starting.md
     - Navigating Files and Directories: navigating.md

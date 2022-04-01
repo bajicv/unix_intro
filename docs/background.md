@@ -36,8 +36,7 @@ user-interface, including fully graphically oriented ones, and
 command-line interpreters. However, most commonly this term is used to
 refer only to software that constitutes CLI.
 
-![GUI vs
-CLI](C:/Users/vladi/Nextcloud/Nowick_Lab/Master_course_Bioinformatics_for_Biologists/SoSe2020/Linux-Cli-vs-Gui.png){width="100%"}
+![GUI vs CLI](https://www.fossmint.com/wp-content/uploads/2018/06/Linux-Cli-vs-Gui.png){width="100%"}
 
 Operating systems (e.g. [Unix](https://en.wikipedia.org/wiki/Unix))
 implement a command-line interface in a
