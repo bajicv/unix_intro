@@ -27,21 +27,21 @@ works slightly differently. We'll learn about the differences between
 these two operators by printing some strings. We can use the `echo`
 command to print strings e.g.
 
-```{bash, echo = T, eval=T}
+```
 echo 'I absolutely adore WHALES and echo command helps me in expressing my love for them!'
 ```
 
 Now run each of the commands twice to reveal the difference between `>`
 and `>>`:
 
-```{bash, echo = T, eval=T}
+```
 echo 'I love whales!' > ~/redirect.txt
 echo 'I love whales!' > ~/redirect.txt
 ```
 
 and:
 
-```{bash, echo = -1, eval=T, message = FALSE, warning = FALSE}
+```
 rm ~/append.txt
 echo 'I love whales!' >> ~/append.txt
 echo 'I love whales!' >> ~/append.txt
@@ -49,7 +49,7 @@ echo 'I love whales!' >> ~/append.txt
 
 Now let's see what's in the files:
 
-```{bash, echo = -1, eval=T}
+```
 cd ~
 head redirect.txt append.txt 
 ```
@@ -74,7 +74,7 @@ Nothing prevents us from chaining pipes consecutively. That is, we can,
 for example, send the output of `wc` directly to `sort`, and then the
 resulting output to `head`.
 
-```{bash, echo = 2, eval=T}
+```
 cd  ~/unix_intro/exercises/multiplefiles
 wc -w *.txt | sort -n | head -n 1
 ```
@@ -90,5 +90,3 @@ told to do otherwise, they read from standard input, do something with
 what they've read, and write to standard output.
 
 ------------------------------------------------------------------------
-
-<br /><br /><br />

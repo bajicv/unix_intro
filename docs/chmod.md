@@ -15,8 +15,7 @@ ls -l
 The first column represents different access modes, i.e., the permission
 associated with a file or a directory (e.g. `drwxrwxrwx`).
 
-![file
-permission](C:/Users/vladi/Nextcloud/Nowick_Lab/Master_course_Bioinformatics_for_Biologists/SoSe2020/file-permission-explanation.png){width="100%"}
+![file permission](http://endtimestruth.com/wp-content/uploads/2014/08/UNIX-file-permissions-rwx-1024x340.jpg){width="100%"}
 
 The permissions are broken into groups of threes, and each position in
 the group denotes specific permission, in this order: **read (r)**,

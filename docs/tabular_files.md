@@ -32,10 +32,23 @@ much bigger than Excel can handle. So get ready to learn basics with
 First, let's take a look at the example of a tabular file (e.g. "GFF3""
 format). We can find it in `~/unix_intro/exercises/genes`.
 
-```{bash, echo = T, eval=F}
+```
 cd ~/unix_intro/exercises/genes
 head chr8.gff
 ```
+??? note "Click to see the output"
+    ```
+    ##gff-version 3
+    ##source-version rtracklayer 1.34.1
+    ##date 2017-02-27
+    ##genome-build .        hg19
+    chr8    rtracklayer     sequence_feature        18248755        18258723        .       +       .       gene_id=10;symbol=NAT2;exerc1=FALSE;ID=10
+    chr8    rtracklayer     sequence_feature        100549014       100549089       .       -       .       gene_id=100126309;symbol=MIR875;exerc1=FALSE;ID=100126309
+    chr8    rtracklayer     sequence_feature        144895127       144895212       .       -       .       gene_id=100126338;symbol=MIR937;exerc1=FALSE;ID=100126338
+    chr8    rtracklayer     sequence_feature        145619364       145619445       .       -       .       gene_id=100126351;symbol=MIR939;exerc1=FALSE;ID=100126351
+    chr8    rtracklayer     sequence_feature        91970706        91997485        .       -       .       gene_id=100127983;symbol=C8orf88;exerc1=FALSE;ID=100127983
+    chr8    rtracklayer     sequence_feature        74332309        74353753        .       +       .       gene_id=100128126;symbol=STAU2-AS1;exerc1=FALSE;ID=100128126
+    ```
 
 As you can see, `.gff` (standing for General Feature Format) is a
 tab-separated file. You can find GFF format specifications defined
@@ -48,8 +61,7 @@ short:
 -   **col3** describes the type of feature (e.g. gene, transcript, exon,
     TF binding site, Histone Acetylation mark, etc...
 -   **col4** and **col5** contain genomic coordinates (start and end)
--   **col9** column contains several fields, separated by a semicolon
-    `;`
+-   **col9** column contains several fields, separated by a semicolon `;`
 
 ------------------------------------------------------------------------
 
@@ -84,7 +96,7 @@ while `$0` refers to all columns).
 
 Now, let's check this example and see how `awk` processes it:
 
-```{bash, echo = 2, eval=F}
+```
 cd ~/unix_intro/exercises/genes
 awk '{print $1}' chr8.gff
 ```
@@ -101,34 +113,20 @@ the file. As we mentioned before, we can specify separators using `-F`
 option, and if we want to specify more than one we can separate them
 with `|` (e.g. `-F"=|;"`):
 
-```{bash, echo = 2, eval=F}
+```
 cd ~/unix_intro/exercises/genes
 awk -F"=|;" '{print $2}' chr8.gff
 ```
 
-::: {.alert .alert-warning}
-<strong>TASK:</strong>
+!!! question
+    Using the above command as a template, how would you extract column with the symbol?
 
+    ??? note "Click for Answer"
+        We can simply modify the column we want to print out:
+        ```
+        awk -F"=|;" '{print $4}' chr8.gff
+        ```
 ------------------------------------------------------------------------
-
-Using the above command as a template, how would you extract column with
-the symbol?
-
-------------------------------------------------------------------------
-
-<details>
-
-<summary>
-
-<strong>Click for Answer</strong>
-
-</summary>
-
-We can simply modify the column we want to print out:
-`awk -F"=|;" '{print $4}' chr8.gff`
-
-</details>
-:::
 
 ## Conditional expressions in `awk`
 
@@ -162,34 +160,18 @@ We can combine conditional expressions with the "or" or "and" operators:
 Now imagine that we need to extract the lines belonging to chromosome 8,
 between the coordinates 100000 and 200000. We can do that like this:
 
-```{bash, echo = 2, eval=F}
+```
 cd ~/unix_intro/exercises/genes
 awk '$1=="chr8" && $4 > 100000 && $5 < 200000' chr8.gff
 ```
 
-::: {.alert .alert-warning}
-<strong>TASK:</strong> <br />
+!!! question "Task"
+    Using the above command as a template, print all the lines between 5000000 and 10000000.
 
-------------------------------------------------------------------------
-
-Using the above command as a template, print all the lines between
-5000000 and 10000000.
-
-------------------------------------------------------------------------
-
-<details>
-
-<summary>
-
-<strong>Click for Answer</strong>
-
-</summary>
-
-`awk '$4 > 5000000 && $5 < 10000000' chr8.gff`
-
-</details>
-:::
-
+    ??? note "Click for Answer"
+        ```
+        awk '$4 > 5000000 && $5 < 10000000' chr8.gff
+        ```
 ------------------------------------------------------------------------
 
 ## Doing operations with columns `awk`
@@ -200,7 +182,7 @@ To illustrate let's print *the first column* and *the sum of the fourth
 and third*. We can **pipe** the output to `head` or `less`, to make it
 easier to visualize:
 
-```{bash, echo = 2, eval=F}
+```
 cd ~/unix_intro/exercises/genes
 awk '{print $1, $5-$4}' chr8.gff | head
 ```
@@ -217,47 +199,23 @@ for using regular expressions to match lines in `awk` is:
 For example, the following code will print all the lines in which the
 symbol starts with *"MIR"*:
 
-```{bash, echo = 2, eval=F}
+```
 cd ~/unix_intro/exercises/genes
 awk '$9 ~ /symbol=MIR/ {print $0}' chr8.gff | head
 ```
 
 Now let's remove the header of the file:
 
-```{bash, echo = 2, eval=F}
+```
 cd ~/unix_intro/exercises/genes
 awk '$0 !~ /#/' chr8.gff | head
 ```
 
 or even shorter: `awk '!/#/' chr8.gff`
 
-::: {.alert .alert-warning}
-<strong>TASK:</strong> <br />
-
-------------------------------------------------------------------------
-
-a)  Calculate the **length** of the gene **POU5F1B** in `chr8.gff` file.
-    <br />b) Once you calculated it, find the gene in `chr8.gff` file
-    whose **gene_id** is equal to that number (i.e. length of POU5F1B).
-
-------------------------------------------------------------------------
-
-<details>
-
-<summary>
-
-<strong>Click for Answer</strong>
-
-</summary>
-
-<br />a) for `awk '$9 ~ /POU5F1B/ {print $5-$4}' chr8.gff` the output
-is: **1584** <br />b) Than we run
-`awk '$9 ~ /gene_id=1584/ {print $0}' chr8.gff` and find that gene
-CYP11B1 had gene_id=1584
-
-</details>
-:::
-
-------------------------------------------------------------------------
-
-<br /><br /><br />
+!!! question "Task"
+    a)  Calculate the **length** of the gene **POU5F1B** in `chr8.gff` file.<br /><br />
+    b) Once you calculated it, find the gene in `chr8.gff` file whose **gene_id** is equal to that number (i.e. length of POU5F1B).
+    ??? note "Click for Answer"
+        <br />a) for `awk '$9 ~ /POU5F1B/ {print $5-$4}' chr8.gff` the output is: **1584** 
+        <br />b) Than we run `awk '$9 ~ /gene_id=1584/ {print $0}' chr8.gff` and find that gene CYP11B1 had gene_id=1584

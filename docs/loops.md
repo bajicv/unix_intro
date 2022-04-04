@@ -18,7 +18,7 @@ classification, and date of the update are presented on the first three
 lines, with DNA sequences on the following lines. Let's look at the
 files:
 
-```{bash, echo = 2, eval=F}
+```
 cd ~/unix_intro/exercises/creatures
 head -n 5 basilisk.dat minotaur.dat unicorn.dat
 ```
@@ -30,7 +30,7 @@ use a **loop** to solve this problem.
 
 Before we do it let's get familiar with the **general form of a loop**:
 
-```{bash, echo = T, eval=F}
+```
 for thing in list_of_things
 do
     operation_using $thing    # Indentation within the loop is not required, but aids legibility
@@ -39,18 +39,19 @@ done
 
 Now we can apply this to our example like this:
 
-```{bash, echo = T, eval=F}
-$ for filename in basilisk.dat minotaur.dat unicorn.dat 
-> do 
->    head -n 2 $filename | tail -n 1 
-> done
+```
+for filename in basilisk.dat minotaur.dat unicorn.dat 
+do 
+    head -n 2 $filename | tail -n 1 
+done
 ```
 
-```{bash, echo = T, eval=F}
-CLASSIFICATION: basiliscus vulgaris
-CLASSIFICATION: bos hominus
-CLASSIFICATION: equus monoceros
-```
+??? note "Click to see the output"
+    ```
+    CLASSIFICATION: basiliscus vulgaris
+    CLASSIFICATION: bos hominus
+    CLASSIFICATION: equus monoceros
+    ```
 
 The shell **prompt** changes from `$` to `>` and back again as we were
 typing in our loop. The second prompt `>`, is different to remind us
@@ -94,20 +95,20 @@ We have called the variable in this loop `filename` in order to make its
 purpose clearer to human readers. The shell itself doesn't care what the
 variable is called; if we wrote this loop as:
 
-```{bash, echo = T, eval=F}
-$ for x in basilisk.dat minotaur.dat unicorn.dat
-> do
->    head -n 2 $x | tail -n 1
-> done
+```
+for x in basilisk.dat minotaur.dat unicorn.dat
+do
+    head -n 2 $x | tail -n 1
+done
 ```
 
 or:
 
-```{bash, echo = T, eval=F}
-$ for temperature in basilisk.dat minotaur.dat unicorn.dat
-> do
->    head -n 2 $temperature | tail -n 1
-> done
+```
+for temperature in basilisk.dat minotaur.dat unicorn.dat
+do
+    head -n 2 $temperature | tail -n 1
+done
 ```
 
 it would work exactly the same way. Don't do this. Programs are only
@@ -116,5 +117,3 @@ misleading names (like `temperature`) increase the odds that the program
 won't do what its readers think it does.
 
 ------------------------------------------------------------------------
-
-<br /><br /><br />
