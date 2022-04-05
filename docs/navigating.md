@@ -37,6 +37,7 @@ We can see what's in our home directory by running `ls`, (short for *list*):
 ```
 ls -F /
 ```
+
 ??? note "Click to see the output"
     ```    
     bin@             lib@         opt/   tmp/
@@ -84,10 +85,10 @@ ls
     ```
 
 Now move to the **parent directory** and do `ls`:
-
-    cd ..
-    ls
-
+```
+cd ..
+ls
+```
 ------------------------------------------------------------------------
 
 ## Absolute vs Relative Paths
@@ -312,5 +313,3 @@ find . -name 1_browsing_textfiles.txt
     ```
     ./1_browsing_textfiles.txt
     ```
-
-------------------------------------------------------------------------
