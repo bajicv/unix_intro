@@ -2,7 +2,8 @@
 
 This is tutorial for UNIX.
 
-!!! question "Task"
+
+!!! note "Task"
     Previously we used `awk` to print all the lines between 5000000 and
     10000000. Let's make this `awk` script into bash script where we can
     define which lines we want to print based on the interval which we can
