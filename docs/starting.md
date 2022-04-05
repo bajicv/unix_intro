@@ -1,8 +1,5 @@
 # Starting UNIX terminal
 
-??? note 
-    something
-
 ## Opening terminal
 
 ------------------------------------------------------------------------
