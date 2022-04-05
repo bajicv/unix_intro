@@ -17,15 +17,5 @@ This is tutorial for UNIX.
         intervals (e.g. between 100000 and 200000, or between 500000 and
         1500000 for `chrX.gff` and `chr9.gff`).
 
-    ??? note "Click for Tip" 
-        We have to know that `awk` and `bash` have different ways of calling variables so just as a hint - we will have to use `awk` option that passes `bash` variables to `awk` script `-v`.
-
-    ??? note "Click for Answer"
-        our `print_lines_between.sh` should contain this code:
-        ```
-        awk -v from=$2 -v to=$3 '$1=="chr8" && $4 > from && $5 < to' $1
-        ```
-
-        We are passing `bash` variable `$2` to shell with `-v` option and by
-        defining that term `from` is a variable within `awk` script, the same
-        logic applies for for `-v to=$3`.
+??? note "Click for Tip" 
+    We have to know that `awk` and `bash` have different ways of calling variables so just as a hint - we will have to use `awk` option that passes `bash` variables to `awk` script `-v`.
