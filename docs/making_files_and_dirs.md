@@ -44,7 +44,7 @@ files/directories with a similar name. Instead of `Space`, we can use
 Let's create a new **directory** in our home directory (`~`) called
 `my_first_dir` using the command `mkdir`.
 
-```{bash, echo = T, eval=F}
+```
 cd ~
 mkdir my_first_dir 
 ```
@@ -65,7 +65,7 @@ examples.
 `nano` is a command-line text editor and we can use it to modify and
 create text files. Type `nano` in your command-line:
 
-```{bash, echo = T, eval=F}
+```
 nano 
 ```
 
@@ -93,7 +93,7 @@ will be saved. Check if it is there with command `ls`.
 
 Let's open the file we just created.
 
-```{bash, echo = T, eval=F}
+```
 nano my_first_file.txt
 ```
 
@@ -113,10 +113,8 @@ is run, it searches for an existing file to populate with its output.
 The `touch` command allows us to efficiently generate a blank text file
 to be used by such programs.
 
-```{bash, echo = T, eval=F}
+```
 touch my_first_touch_file.txt
 ```
 
 ------------------------------------------------------------------------
-
-<br /><br /><br />

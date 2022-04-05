@@ -9,13 +9,13 @@ use the `mv` command. The syntax for the `mv` command is:
 Now, let's go to our home directory `cd ~` and **rename**
 `my_first_touch_file.txt` with a more compact name `mftf.txt`:
 
-```{bash, echo = T, eval=F}
+```
 mv my_first_touch_file.txt mftf.txt
 ```
 
 Now, let's **move** `mftf.txt` to `my_first_dir` directory:
 
-```{bash, echo = T, eval=F}
+```
 mv mftf.txt my_first_dir
 ```
 
@@ -27,7 +27,7 @@ that while being in our home directory. Please, be aware that the
 **shell does not have a trash bin** - so, once something is deleted,
 it's really gone! Be careful what you delete!
 
-```{bash, echo = T, eval=F}
+```
 cd ~
 rm my_first_dir/mftf.txt
 ```
@@ -37,6 +37,6 @@ its contents if we use the recursive option `-r`.
 
 Now let's delete `my_first_dir`.
 
-```{bash, echo = T, eval=F}
+```
 rm -r my_first_dir
 ```

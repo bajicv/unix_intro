@@ -23,6 +23,8 @@ there too! We can have multiple "windows" within our `screen` session,
 and whenever we open a new "window" we will continue from the same place
 where we opened our session.
 
+------------------------------------------------------------------------
+
 ## Starting screen session
 
 To **start named** `screen` session with name `my_first_screen_session`
@@ -32,6 +34,8 @@ type:
 
 P.S. you can also start an unnamed session by just typing `screen` but
 we recommend you to name your sessions.
+
+------------------------------------------------------------------------
 
 ## Screen commands
 
@@ -70,17 +74,23 @@ note that here we are referring to `a` as a symbol for pressing "Taster
 | `Ctrl+a` `Q`      | Close all regions but the current one              |
 | `Ctrl+a` `X`      | Close the current region                           |
 
+------------------------------------------------------------------------
+
 ## Detaching from screen session
 
 We can **detach** from the screen session at any time by typing:
 `Ctrl+a` and `d` After we detach from the screen session all the program
 running in the screen session will continue to run.
 
+------------------------------------------------------------------------
+
 ## Renaming screen session
 
 To **rename** an existing session open it first, and once inside the
 session press `Ctrl+a` then type `:sessionname my_session_name` and
 press `Enter`.
+
+------------------------------------------------------------------------
 
 ## Resuming and listing running screen sessions
 
@@ -106,6 +116,8 @@ would type:
 
     screen -r love_whales
 
+------------------------------------------------------------------------
+
 ## Quitting screen sessions
 
 When in screen session we can **quit** it (i.e. kill all windows and
@@ -116,6 +128,8 @@ When deatached from screen session we can **quit** it:
 
     screen -X -S my_first_screen_session quit
 
+------------------------------------------------------------------------
+
 ## Getting help
 
 When in `screen` session type `Ctrl+a` and `?`. This will show us
@@ -124,7 +138,3 @@ commands or parameters on screen.
 When outside `screen` you can check for the manual page of `screen`
 command by typing: `man screen`, or you can check the *help page* of
 `screen` command with `screen --help`.
-
-------------------------------------------------------------------------
-
-<br /><br /><br />

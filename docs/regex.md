@@ -11,31 +11,19 @@ are used as:
 -   **regular expressions** which are popular with many other commands
     and popular for use with text searching and manipulation.
 
-Note that **wildcard patterns are not regular expressions**, although
-they are a bit similar. There are two major differences:
+Note that **wildcard patterns are not regular expressions**, although they are a bit similar. There are two major differences:
 
--   
+1.  **Wildcard patterns** match **filenames**, while **regular expressions** match **text**.
+   
+2.  The conventions are not the same: for example, in a **regular expression** `*` means zero or more copies of the preceding thing, while as a **wildcard** it matches any character zero or more times.
 
-    1.  **Wildcard patterns** match **filenames**, while **regular
-        expressions** match **text**.
-
--   
-
-    2.  The conventions are not the same: for example, in a **regular
-        expression** `*` means zero or more copies of the preceding
-        thing, while as a **wildcard** it matches any character zero or
-        more times.
-
-::: {.alert .alert-info role="alert"}
-<strong>TIP:</strong>
+!!! tip
+    If you have a file with **wildcard** expressions in it then you can use
+    **single quotes** (`' '`) to stop bash expanding them or use
+    **backslashes** (escape characters `\`), or both. But keep in mind that
+    we should avoid creating files with names that contain wildcards.
 
 ------------------------------------------------------------------------
-
-If you have a file with **wildcard** expressions in it then you can use
-**single quotes** (`' '`) to stop bash expanding them or use
-**backslashes** (escape characters `\`), or both. But keep in mind that
-we should avoid creating files with names that contain wildcards.
-:::
 
 ## Standard Wildcards (globbing patterns)
 
@@ -105,54 +93,29 @@ characters including nothing and finally ending with `txt`. Thus this
 pattern would give us `1_browsing_textfiles.txt`,
 `2_searching_patterns.txt` in `~/unix_intro/exercises` directory.
 
-::: {.alert .alert-warning}
-<strong>TASK:</strong> <br />
+!!! question
+    When in the `~/unix_intro/exercises/genes` directory, which `ls`
+    command(s) will produce `example.bed` and `mgat_genes.gb` as the output?
+    <br />a) `ls *.*` 
+    <br />b) `ls *b*` 
+    <br />c) `ls *.b*` 
+    <br />d)
+    `ls ??a*` 
+    <br />e) `ls *a*e*b*`
+    
+    ??? note "Click for Answer"
+        Correct answers are: b), d) and e)
 
-------------------------------------------------------------------------
 
-When in the `~/unix_intro/exercises/genes` directory, which `ls`
-command(s) will produce `example.bed` and `mgat_genes.gb` as the output?
-<br />a) `ls *.*` <br />b) `ls *b*` <br />c) `ls *.b*` <br />d)
-`ls ??a*` <br />e) `ls *a*e*b*`
 
-------------------------------------------------------------------------
-
-<details>
-
-<summary>
-
-<strong>Click for Answer</strong>
-
-</summary>
-
-Correct answers are: b), d) and e)
-
-</details>
-:::
-
-::: {.alert .alert-warning}
-<strong>TASK:</strong> <br />
-
-------------------------------------------------------------------------
-
-From `~/unix_intro/exercises/genes` directory, copy all files that are
-ending with 3 characters after the dot (i.e. `.???`) to your `~/backup`
-directory.
-
-------------------------------------------------------------------------
-
-<details>
-
-<summary>
-
-<strong>Click for Answer</strong>
-
-</summary>
-
-`cp ~/unix_intro/exercises/genes/*.??? ~/backup`
-
-</details>
-:::
+!!! question "Task"
+    From `~/unix_intro/exercises/genes` directory, copy all files that are
+    ending with 3 characters after the dot (i.e. `.???`) to your `~/backup`
+    directory.
+    ??? note "Click for Answer"
+        ```
+        cp ~/unix_intro/exercises/genes/*.??? ~/backup
+        ```
 
 ------------------------------------------------------------------------
 
@@ -165,15 +128,10 @@ multiple parts of text and by various programming languages (e.g.
 `grep`, `find`, `awk`, and many others) that work with text. For the
 manual page type: `man regex`.
 
-::: {.alert .alert-info role="alert"}
-<strong>TIP:</strong>
-
-------------------------------------------------------------------------
-
-If your regular expressions don't seem to be working then you probably
-need to use single quotation marks (`' '`) over the sentence and then
-use backslashes (`\`) on every single special character.
-:::
+!!! tip
+    If your regular expressions don't seem to be working then you probably
+    need to use single quotation marks (`' '`) over the sentence and then
+    use backslashes (`\`) on every single special character.
 
 ------------------------------------------------------------------------
 
@@ -234,5 +192,3 @@ use backslashes (`\`) on every single special character.
     9 anywhere within its name.
 
 ------------------------------------------------------------------------
-
-<br /><br /><br />

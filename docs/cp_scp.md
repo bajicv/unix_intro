@@ -9,25 +9,21 @@ Let's copy our first `touch` file and name it same but with adding
 "\_copy" (P.S. don't forget to use `Tab` to auto-complete long names of
 our files):
 
-```{bash, echo = T, eval=F}
+```
 cp my_first_touch_file.txt my_first_touch_file_copy.txt
 ```
 
-::: {.alert .alert-warning}
-<strong>TASK:</strong>
+!!! question "Task"
+    Copy your first touch file `my_first_touch_file.txt` to `my_first_dir`
+    directory, and name it as `my_first_touch_file_copy.txt`.
 
-------------------------------------------------------------------------
-
-Copy your first touch file `my_first_touch_file.txt` to `my_first_dir`
-directory, and name it as `my_first_touch_file_copy.txt`.
-:::
 
 Now when we learned how to `cp` files, let's copy the exercise
 *directory* from `/opt/evop/public/BIOINFORMATICS/unix_intro/exercises`
 to your home directory (`~`). We can copy a directory and all its
 contents by using the **recursive** option `-r`:
 
-```{bash, echo = T, eval=F}
+```
 cp -r /opt/evop/public/BIOINFORMATICS/unix_intro ~
 ```
 
@@ -42,7 +38,7 @@ For this exercise, let's make a directory called `backup`. Now let's
 copy files from `~/unix_intro/exercises/` called
 `1_browsing_textfiles.txt` and `2_searching_patterns.txt` in it.
 
-```{bash, echo = T, eval=F}
+```
 cd
 mkdir backup
 cp ~/unix_intro/exercises/1_browsing_textfiles.txt ~/unix_intro/exercises/2_searching_patterns.txt backup
@@ -58,7 +54,9 @@ starting an FTP session or logging into the remote systems explicitly.
 
 The syntax for the `scp` command is:
 
-`scp [options] username1@source_host:directory1/filename1 username2@destination_host:directory2/filename2`
+```
+scp [options] username1@source_host:directory1/filename1 username2@destination_host:directory2/filename2
+```
 
 The location of the source file is specified by
 `username1@source_host:directory1/filename1`, which includes the:
@@ -88,7 +86,7 @@ compared to the login process):
     `evop-login` to the current directory while being logged-in to
     `andorra`:
 
-```{bash, echo = T, eval=F}
+```
 ssh YourID@andorra.imp.fu-berlin.de # enter your password once asked for it
 scp -r evop-login:~/unix_intro .
 ```
@@ -98,7 +96,7 @@ scp -r evop-login:~/unix_intro .
     directory where you wanna save your files (e.g. `Downloads`), and
     then copy the `unix_intro` directory from `andorra` using `scp`:
 
-```{bash, echo = T, eval=F}
+```
 scp -r YourID@andorra.imp.fu-berlin.de:~/unix_intro . # enter your password once asked for it
 ```
 

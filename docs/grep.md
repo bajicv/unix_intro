@@ -13,14 +13,14 @@ can practice the `grep` command. To find out what is inside we have to
 search for the lines containing the word *"start"*. To find them, let's
 use `grep`:
 
-```{bash, echo = 2, eval=T}
+```
 cd unix_intro/exercises
 grep start 2_searching_patterns.txt
 ```
 
 Now the document told us to `grep` the word *"help"* to continue:
 
-```{bash, echo = 2, eval=T}
+```
 cd unix_intro/exercises
 grep help 2_searching_patterns.txt
 ```
@@ -39,14 +39,14 @@ number of lines.
 If we do a search for *"ignorecase"* without any option, we only get
 some of the lines.
 
-```{bash, echo = 2, eval=T}
+```
 cd unix_intro/exercises
 grep ignorecase 2_searching_patterns.txt
 ```
 
 The `-i` option allows to do a **case-insensitive** search.
 
-```{bash, echo = 2, eval=T}
+```
 cd unix_intro/exercises
 grep -i ignorecase 2_searching_patterns.txt
 ```
@@ -54,14 +54,14 @@ grep -i ignorecase 2_searching_patterns.txt
 To solve the exercise, we also have to **count the number of output
 lines**. This can be done with the `-c` option:
 
-```{bash, echo = 2, eval=T}
+```
 cd unix_intro/exercises
 grep -i -c ignorecase 2_searching_patterns.txt
 ```
 
 Solution: how to find the instructions for the next exercise
 
-```{bash, echo = 2, eval=T}
+```
 cd unix_intro/exercises
 grep 21 2_searching_patterns.txt
 ```
@@ -79,7 +79,7 @@ find it?
 
 We can use the `*` character to specify multiple files:
 
-```{bash, echo = 2, eval=T}
+```
 cd unix_intro/exercises
 grep 'regex' multiplefiles/*
 ```
@@ -95,7 +95,7 @@ Let's practice this on the genbank file called `mgat_genes.gb` in
 `~/unix_intro/exercises/genes` directory. Take a look at this file and
 notice how this format is well suited for grep searches:
 
-```{bash, echo = T, eval=T}
+```
 cd unix_intro/exercises/genes
 head mgat_genes.gb
 ```
@@ -105,7 +105,7 @@ Let's say that we are interested in finding all the lines where
 
 We can do it with two grep commands:
 
-```{bash, echo = -1, eval=T}
+```
 cd unix_intro/exercises/genes
 grep ORGANISM mgat_genes.gb | grep 'Homo sapiens'
 ```
@@ -115,7 +115,7 @@ there are other lines where the word "Homo sapiens" is present. The file
 contains sequences from two other organisms apart from Homo sapiens. Can
 you guess which one to search for the next exercise? Try "bos taurus":
 
-```{bash, echo = -1, eval=T}
+```
 cd unix_intro/exercises/genes
 grep ORGANISM mgat_genes.gb | grep taurus
 ```
@@ -143,7 +143,7 @@ identify all the sequences containing **three As**, followed by any
 **two characters**, followed by **three Ts** in the file called
 `sequences.fasta`?
 
-```{bash, echo = T, eval=T}
+```
 cd unix_intro/exercises/genes
 grep 'AAA..TTT' sequences.fasta
 ```
@@ -151,7 +151,7 @@ grep 'AAA..TTT' sequences.fasta
 If we use the `-B1` `grep` option, we can retrieve the names of these
 sequences:
 
-```{bash, echo = -1, eval=T}
+```
 cd unix_intro/exercises/genes
 grep -B1 'AAA..TTT' sequences.fasta
 ```
@@ -162,41 +162,20 @@ nine lines before matched line, and so on).
 
 Now, let's **pipe** an additional `grep '>'` to see a cow:
 
-```{bash, echo = -1, eval=T}
+```
 cd unix_intro/exercises/genes
 grep -B1 'AAA..TTT' sequences.fasta | grep '>'
 ```
 
-::: {.alert .alert-warning}
-<strong>TASK:</strong>
+!!! question "Task"
+    How would you use `grep` on file `sequences.fasta` that is located in `~/unix_intro/exercises/genes` to find:<br /> 
+    <br />a) lines starting with an `G` and ending with an `C`?<br /> 
+    <br />b) lines starting with an `G` and ending with an `C` or lines starting with an `C` and ending with an `T`?
+    (Hint: use regex for logical OR relationship between wildcards `\|`)<br />
+    <br />c) lines starting with an `G` and ending with an `C`, and contain in them `N` followed with an `T`. 
+    (Hint: pipe from one grep to another)<br />
 
-------------------------------------------------------------------------
-
-How would you use `grep` on file `sequences.fasta` that is located in
-`~/unix_intro/exercises/genes` to find: <br />a) lines starting with an
-`G` and ending with an `C`? <br />b) lines starting with an `G` and
-ending with an `C` or lines starting with an `C` and ending with an `T`?
-(Hint: use regex for logical OR relationship between wildcards `\|`)
-<br />c) lines starting with an `G` and ending with an `C`, and contain
-in them `N` followed with an `T`. (Hint: pipe from one grep to another)
-
-------------------------------------------------------------------------
-
-<details>
-
-<summary>
-
-<strong>Click for Answer</strong>
-
-</summary>
-
-<br />a) `grep '^G.*C$' sequences.fasta` <br />b)
-`grep '^G.*C$\|^C.*T$' sequences.fasta` <br />c)
-`grep '^G.*C$' sequences.fasta | grep 'NT'`
-
-</details>
-:::
-
-------------------------------------------------------------------------
-
-<br /><br /><br />
+    ??? note "Click for Answer"
+        <br />a) `grep '^G.*C$' sequences.fasta` 
+        <br />b) `grep '^G.*C$\|^C.*T$' sequences.fasta` 
+        <br />c) `grep '^G.*C$' sequences.fasta | grep 'NT'`

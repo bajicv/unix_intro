@@ -1,8 +1,42 @@
+# Project information
 site_name: "Introduction to UNIX command-line"
-#site_url: unix-intro.readthedocs.io
+site_author: Vladimir Bajić
+repo_url: https://github.com/bajicv/unix_intro
 
+# Copyright
+copyright: Copyright &copy; 2022 Vladimir Bajić
+
+# Theme
+theme: 
+    name: readthedocs
+    #logo: img/favicon.ico
+    highlightjs: true
+    hljs_languages:
+        - bash
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bajicv
+
+# Pages  
 nav:
-    - Index: index.md
+    - Home: index.md
     - Background: background.md
     - Starting UNIX terminal: starting.md
     - Navigating Files and Directories: navigating.md
@@ -21,4 +55,4 @@ nav:
     - Other useful Unix commands: extra.md
     - References: references.md
 
-theme: readthedocs
+
