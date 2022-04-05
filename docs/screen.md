@@ -103,13 +103,16 @@ will need to append the screen session name after the `-r` option.
 
 We can **list** the current running screen sessions with:
 
-    screen -ls
-
-    There are screens on:
-            30285.amazing_whales    (04/17/2020 07:19:10 AM)        (Detached)
-            30275.love_whales       (04/16/2020 09:28:50 AM)        (Detached)
-            28591.pts-0.evop-login  (04/14/2020 08:04:53 AM)        (Detached)
-    3 Sockets in /run/screen/S-vladimir_bajic.
+```
+screen -ls
+```
+```
+There are screens on:
+        30285.amazing_whales    (04/17/2020 07:19:10 AM)        (Detached)
+        30275.love_whales       (04/16/2020 09:28:50 AM)        (Detached)
+        28591.pts-0.evop-login  (04/14/2020 08:04:53 AM)        (Detached)
+3 Sockets in /run/screen/S-vladimir_bajic.
+```
 
 If we would like to resume screen called `30275.love_whales`, then we
 would type:
