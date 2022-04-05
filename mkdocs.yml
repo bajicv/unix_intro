@@ -22,3 +22,9 @@ nav:
     - References: references.md
 
 theme: readthedocs
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
