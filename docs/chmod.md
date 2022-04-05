@@ -62,7 +62,7 @@ For example, to add permission for *everyone to read* a file
 `example.bed` in the directory named `~/unix_intro/exercises/genes`, at
 the Unix prompt, enter:
 
-```{bash, echo = T, eval=F}
+```bash
 chmod a+r example.bed
 ```
 
@@ -70,7 +70,7 @@ The `a` stands for "all", the `+` for "add", and the `r` for "read". If
 you omit the access class, it's assumed to be all, so you could also
 enter the previous example as:
 
-```{bash, echo = T, eval=F}
+```bash
 chmod +r example.bed
 ```
 
@@ -79,7 +79,7 @@ For example, to remove read and write permission for group and other
 users (leaving only yourself with read and write permission) on a file
 named myfile, you would enter:
 
-```{bash, echo = T, eval=F}
+```bash
 chmod go-rw example.bed
 ```
 
@@ -87,7 +87,7 @@ You can also specify that different permissions be added and removed in
 the same command. For example, to remove write permission and add
 execute for all users on `example.bed`, you would enter:
 
-```{bash, echo = T, eval=F}
+```bash
 chmod a-w+x example.bed
 ```
 
@@ -98,7 +98,7 @@ read (`r`) access to `example.bed` You could also use the exact form to
 explicitly state that group and other users' access is set only to read
 with the `=`operator:
 
-```{bash, echo = T, eval=F}
+```bash
 chmod go=r example.bed
 ```
 
@@ -106,7 +106,7 @@ The `chmod` command also operates on *directories*. For example, to
 *remove write* permission for *other users* on a subdirectory named
 `~/unix_intro/exercises/genes`, you would enter:
 
-```{bash, echo = T, eval=F}
+```bash
 chmod o-w ~/unix_intro/exercises/genes
 ```
 
@@ -116,7 +116,7 @@ execution permissions for other users to a directory
 \``~/unix_intro/exercises` and all the subdirectories it contains, you
 would enter:
 
-```{bash, echo = T, eval=F}
+```bash
 chmod -R o+x ~/unix_intro/exercises
 ```
 
