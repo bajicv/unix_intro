@@ -1,10 +1,10 @@
 # Project information
 site_name: "Introduction to UNIX command-line"
-site_author: Vladimir Bajić
-repo_url: https://github.com/bajicv/unix_intro
+# site_author: Vladimir Bajić
+# repo_url: https://github.com/bajicv/unix_intro
 
 # Copyright
-copyright: Copyright &copy; 2022 Vladimir Bajić
+# copyright: Copyright &copy; 2022 Vladimir Bajić
 
 # Theme
 theme: 
@@ -29,10 +29,10 @@ markdown_extensions:
       anchor_linenums: true
 
 # Extra
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/bajicv
+# extra:
+#   social:
+#     - icon: fontawesome/brands/github
+#       link: https://github.com/bajicv
 
 # Pages  
 nav:
