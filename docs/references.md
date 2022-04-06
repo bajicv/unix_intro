@@ -21,3 +21,5 @@ tutorials:
 <https://opensource.com/article/19/11/how-regular-expressions-awk>
 
 <https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm>
+
+<https://wiki.gentoo.org/wiki/SSH>

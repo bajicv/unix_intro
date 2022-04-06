@@ -66,31 +66,22 @@ the Windows can be a bit tricky depending on the software you chose to
 install at the beginning (from here on we assume you are using
 `MobaXterm` or `Ubuntu on Windows 10 app`).
 
-So, let's do it! First, we have to open the terminal as described before
-and then we have to type:
+So, let's do it! First, we have to open the terminal as described before and then we have to type:
 
 ``` bash
-ssh YourID@andorra.imp.fu-berlin.de
-ssh evop-login
+ssh -J YourID@andorra.imp.fu-berlin.de evop-login
 ```
+[SSH](https://wiki.gentoo.org/wiki/SSH) (**S**ecure **SH**ell) is the ubiquitous tool for logging into and working on remote machines securely. All sensitive information is strongly encrypted, and in addition to the remote shell, SSH supports file transfer, and port forwarding for arbitrary protocols, allowing secure access to remote services. 
 
-Executing **graphical** applications remotely is very demanding for the 
-network, so by default, we will use only the command-line interface. To
-run a graphical application remotely, we have to log in to the server,
-using the `-X` option in `ssh`:
+Two `ssh` options important for us are: 
+- `-J` which allows us to jump through a host (from host1 to host2, in our case from `andorra` to `evop-login`).
+- `-X` which allows us to execute **graphical** applications remotely. Runing graphical applications remotely is very demanding for the network, so by default, we will NOT use this option during this tutorial.
 
-```
-ssh -X YourID@andorra.imp.fu-berlin.de
-ssh -X evop-login
-```
+In addition to the main `ssh` command, the SSH suite of programs includes tools such as:
 
-Or we can make it as a one-liner:
-
-```
-ssh -XJ YourID@andorra.imp.fu-berlin.de evop-login
-```
-
-where `-J` option allows to jump through a host (from host1 to host2, in our case from `andorra` to `evop-login`)
+* `scp` - Secure Copy Program (which we will be using), 
+* `sftp` - Secure File Transfer Protocol, or 
+* `ssh-agent` to help with key management.
 
 ------------------------------------------------------------------------
 
@@ -103,9 +94,14 @@ By default, your prompt will contain *the username of the current user* followed
 
 For those who are curious, you can [customize your bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/) by changing the color and information contained in it.
 
-Sometimes you will find chunks of code online **with prompt**, but be
-sure that you remove it when you are typing or pasting the code into the
-terminal.
+!!! tip
+    Sometimes you will find chunks of code online **with prompt** e.g. 
+    
+    ```bash
+    $ ls -l
+    ```
+    
+    Be sure that you remove it when you are typing or pasting the code into the terminal.
 
 ------------------------------------------------------------------------
 
@@ -126,28 +122,28 @@ The general syntax of a shell command follows this logic:
     called with more than one option and more than one argument: but a
     command doesn't always require an argument or an option.
 
-So by typing: <span style="color:red">ls</span> <span style="color:blue">-F</span> <span style="color:green">/</span>
+So by typing: <span style="color:red">ls</span> <span style="color:blue">-l</span> <span style="color:green">/</span>
 
-we are calling **command** `ls` with an **option** `-F` and an **argument** `/`. Each part is separated by **spaces**: if you omit the space between `ls` and `-F` the shell will look for a command called `ls-F`, which doesn't exist. Also, **capitalization** is important. For example, `ls -s` will display the size of files and directories alongside the names, while `ls -S` will sort the files and directories by size, while `LS -S` will produce an error. 
+we are calling **command** `ls` with an **option** `-l` and an **argument** `/`. Each part is separated by **spaces**: if you omit the space between `ls` and `-l` the shell will look for a command called `ls-l`, which doesn't exist. Also, **capitalization** is important. For example, `ls -s` will display the size of files and directories alongside the names, while `ls -S` will sort the files and directories by size, while `LS -S` will produce an error. 
 
-    ls -F ~
+    ls -l ~
 
-The command above will give us a listing of files and directories in our *home directory* `~`.
+The command above will give us a long listing `-l` of files and directories in our *home directory* `~`.
 
 
-### Command options
+### <span style="color:blue">Command options</span>
 
 Command **options** either start with a single dash `-`
 (single-character options) or two dashes `--` (long options), and they
 are changing the behavior of a command. Single-character options use a
 space as a separator from their parameter, while the long options use
-'='(e.g. single-character option: `-0 value`; long option:
+"=" (e.g. single-character option: `-0 value`; long option:
 `--option=value`). We can combine single-character options like this:
 `ls -ltr` where `-ltr` are 3 different options `-l`, `-t`, and `-r`.
 Some commands have a lot of options, such as `ls`, and thus it can be
 tricky finding the right option.
 
-### Command arguments
+### <span style="color:green">Command arguments</span>
 
 **Arguments** tell the command what to operate on (e.g. files and
 directories). In other words, we can define an argument as the input
@@ -182,9 +178,10 @@ ls -l /opt/evop/public/BIOINFORMATICS/unix_intro/exercises
 
     Let the `Tab` key do its magic with auto-completion! We can use the `Tab` key on the keyboard to automatically complete a *command*, *directory*, or *file* name. <br /><br />
 
-!!! example
+!!! example "Task"
     Try the following: 
-    <br />Type `ls /o` and then press the `Tab`, add `e` then press the `Tab`, add `p` then press the `Tab`, add `B` then press the `Tab` 3 times and then press `Enter` <br />Now type `he` and then press the `Tab` **twice**. You will get the list of commands beginning with **"he"**.
+    <br /> a) Type `ls /o` and then press the `Tab`, add `e` then press the `Tab`, add `p` then press the `Tab`, add `B` then press the `Tab`, add `u` then press the `Tab`, , add `e` then press the `Tab` and then press `Enter` 
+    <br /> b) Now type `he` and then press the `Tab` **twice**. You will get the list of **commands** beginning with **"he"**.
 
 ------------------------------------------------------------------------ 
 
@@ -323,7 +320,8 @@ ls --help
     or available locally via: info '(coreutils) ls invocation'
     ```
 
-<br /><br />
+!!! question "Task"
+    Search for help for command `cp` and find out what for we use option `-r` 
 
 ### Manuals `man`
 
@@ -331,8 +329,7 @@ We can read its manual with `man`, such as:
 
     man ls
 
-
-??? note "Click here to see the output" 
+??? note "Click here to see first couple of lines of the output" 
     ```{}
     LS(1)                                  User Commands                                  LS(1)
 
@@ -351,8 +348,6 @@ We can read its manual with `man`, such as:
     Manual page ls(1) line 1 (press h for help or q to quit)
     ```
 
-<br /><br />
-
 `man` will turn your terminal into a page with a description of the `ls`
 command and its options and, if you're lucky, some examples of how to
 use it.
@@ -364,9 +359,10 @@ by the character or word you are searching for. Sometimes a search will
 result in multiple hits. If so, you can move between hits using `N` (for
 moving to the *next* instance) and `Shift+N` (for moving backward).
 
-To *quit* the `man` pages, press `Q`.
+To *quit* the `man` pages, press `q`.
 
-<br />
+!!! question "Task"
+    Find in the manual of `grep` what we can do with option `-v`
 
 ### Google it!
 
@@ -374,5 +370,8 @@ And finally, the most important way to find help for commands is
 searching it on the internet! Google it!
 
 ![Google it](https://media.darpanmagazine.com/library/uploads/news/content/google-it2.jpg){width="100%"}
+
+!!! question "Task"
+    Goole _"How do you list only files not directories in Linux?"_
 
 ------------------------------------------------------------------------
