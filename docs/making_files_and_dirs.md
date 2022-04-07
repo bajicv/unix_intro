@@ -3,18 +3,16 @@
 Before we make our first directory and file lets get a few useful tips
 for the names of your files.
 
--   Don't use `Space`, `<`, `>`, `|`, `\`, `:`, `(`, `)`, `&`, `;`, `?`,
-    `*`
+!!! tip
+    - **Don't** use `Space`, `<`, `>`, `|`, `\`, `:`, `(`, `)`, `&`, `;`, `?`, `*`
 
--   Don't begin the name with a dash (`-`), or a full stop (`.`).
+    - **Don't** begin the name with a dash (`-`), or a full stop (`.`).
 
--   The best is to stick with `letters`, `numbers`, a dash (`-`), and an
-    underscore (`_`). Try to use a full stop (`.`) only for file
-    extensions (e.g. `.pdf`, `.txt`...).
+    - **Do** stick with `letters`, `numbers`, a dash (`-`), and an underscore (`_`). 
+            
+    - Try to use a full stop (`.`) only for file extensions (e.g. `.pdf`, `.txt`...).
 
--   Unix is **case sensitive**. So filename `my_first_file.txt`,
-    `My_First_File.txt`, `my_FIRST_file.txt`, all are three different
-    files.
+    - Unix is **case sensitive**. So filename `my_first_file.txt`, `My_First_File.txt`, `my_FIRST_file.txt`, all are three **different** files.
 
 Complicated names of files and directories can make our lives painful
 when working on the command-line. Many [characters have special
@@ -58,8 +56,6 @@ Once you made it, do `ls` to check if it is there.
 There are many ways to make a file. Here we will only give some
 examples.
 
-------------------------------------------------------------------------
-
 ### `nano`
 
 `nano` is a command-line text editor and we can use it to modify and
@@ -71,6 +67,9 @@ nano
 
 Ok, don't get afraid. Now we are inside `nano` and you can see basic
 commands at the bottom of the window.
+
+![nano](https://cdn.staticaly.com/gh/Lin-Buo-Ren/nano-snap/24def40f/snap/local/screenshots/main-interface.png)
+
 
 Here are some of the useful `nano` commands:
 
@@ -87,7 +86,7 @@ Here are some of the useful `nano` commands:
 Now let's type something (e.g. *"Can't wait for quarantine to end"*) and
 press `Ctrl`+`X`. This will close the file, but `nano` will offer us to
 save it. When `nano` asks as if we want to save it we have to press `Y`,
-and then `nano` will ask as for "File Name to Write:". Let's name it as
+and then `nano` will ask as for _"File Name to Write:"_. Let's name it as
 `my_first_file.txt`. After you typed it just press `Enter` and the file
 will be saved. Check if it is there with command `ls`.
 
@@ -97,13 +96,12 @@ Let's open the file we just created.
 nano my_first_file.txt
 ```
 
-Let's type in a bit of text (e.g. "*4 real*"). Once we're happy with our
+Let's type in a bit of text (e.g. _"4 real"_). Once we're happy with our
 text, we can press `Ctrl`+`O` to save it. We'll be asked "File Name to
 Write:" and we can just press the `Enter` and use already existing name
 `my_first_file.txt`, or we can make a modified copy by giving it a new
 name. After we are done we can close `nano` as before with `Ctrl`+`X`.
 
-------------------------------------------------------------------------
 
 ### `touch`
 
@@ -116,5 +114,10 @@ to be used by such programs.
 ```
 touch my_first_touch_file.txt
 ```
+
+!!! tip "Homework"
+    Explore `vim`.<br /> 
+    [Vim](https://www.vim.org/) is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X. <br />
+    _P.S. In case you are struggling to close it, take a look [here](https://phoenixnap.com/kb/how-to-exit-vim)._
 
 ------------------------------------------------------------------------

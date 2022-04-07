@@ -6,13 +6,19 @@ Let's have a look at how the file system as a whole is organized.
 
 ![Standard Unix filesystem hierarchy](https://upload.wikimedia.org/wikipedia/commons/f/f3/Standard-unix-filesystem-hierarchy.svg ){width="100%"}
 
-At the top is the **root directory** that holds everything else. We refer to it using a slash character `/` at the front of a file or directory name. However, most of the `/` characters appear inside a path, and they symbolize a separator.
+At the top is the **root directory** that holds everything else. We refer to it using a slash character `/` at the front of a file or directory name. However, most of the `/` characters appear inside a path, and they symbolize a **separator**.
 
-Inside the root directory, there are several other directories: `bin`(which is where some built-in programs are stored), `usr` (where users' personal directories i.e. **home directory** are located), and so on.
+Inside the root directory, there are several other directories: `bin` (which is where some built-in programs are stored), `usr` (where users' personal directories i.e. **home directory** are located), and so on.
 
 Typically, when we open a new command prompt we will be in our **home directory** (also called a *login directory*). We refer to the home directory by character `~`.
 
-Directories are like rooms in a huge building (i.e. computers file system) - at any time while we are using the shell we are in exactly one room, called the **current working directory**. We refer to the current directory with a dot `.`. Most commands by default read and write files in the current working directory, so knowing where we are before running a command is very important!
+Directories are like rooms in a huge building (i.e. computers file system) - at any time while we are using the shell we are in exactly one room, called the **current working directory**. We refer to the current directory with a dot `.` and with two dots `..` we refer to the **parent directory**. Most commands by default read and write files in the current working directory, so knowing where we are before running a command is very important!
+
+!!! warning "Summary" 
+    * `/` - root directory
+    * `~` - home directory
+    * `.` - current working directory
+    * `..` - parent directory
 
 ------------------------------------------------------------------------
 
@@ -31,6 +37,7 @@ We can see what's in our home directory by running `ls`, (short for *list*):
 
 !!! question
           What happens when you type `ls` in your current directory?
+
 
 `ls` will print the names of the files and directories in the current directory. We can make its output more comprehensible by using the `-F` **option** (also known as a *switch* or a *flag*), which tells `ls` to classify the output by adding a marker to file and directory names to indicate what they are (directories will end with `/`, links with `@`, and executable with `*`). Depending on your default options, the shell might also use colors to differentiate files and directories:
 
@@ -58,7 +65,7 @@ By convention, in Unix systems **hidden files** have a name beginning with a `.`
         <br />c) What about if you use both the `-r` and the `-t` option? 
         <br />d) Which option can be passed to `ls` to sort files by size? 
         <br />e) What does **SYNOPSIS** in `man ls` tells us? 
-        <br />f) How can we show the contents of a directory recursively with `ls`? 
+        <br />f) How can we show the contents of a directory _recursively_ with `ls`? 
         <br />g) What does `ls / ~ .` do?
 
 ------------------------------------------------------------------------
@@ -313,3 +320,9 @@ find . -name 1_browsing_textfiles.txt
     ```
     ./1_browsing_textfiles.txt
     ```
+
+!!! tip "Homework"
+    How can you gett the absolute path to a directory (e.g. `exercises` directory)?
+
+    ??? tip "Click to see the answer"
+        Try finding the answer [here](https://www.baeldung.com/linux/absolute-directory-of-file)
