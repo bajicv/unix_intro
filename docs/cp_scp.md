@@ -6,16 +6,16 @@
 *current working directory* and calls it `file2`.
 
 Let's copy our first `touch` file and name it same but with adding
-"\_copy" (P.S. don't forget to use `Tab` to auto-complete long names of
-our files):
-
-```
-cp my_first_touch_file.txt my_first_touch_file_copy.txt
-```
+"\_copy" (_P.S. don't forget to use `Tab` to auto-complete long names of our files_):
 
 !!! question "Task"
     Copy your first touch file `my_first_touch_file.txt` to `my_first_dir`
     directory, and name it as `my_first_touch_file_copy.txt`.
+
+    ??? question "Click for Answer"
+        ```
+        cp my_first_touch_file.txt my_first_touch_file_copy.txt
+        ```
 
 
 Now when we learned how to `cp` files, let's copy the exercise
@@ -43,6 +43,8 @@ cd
 mkdir backup
 cp ~/unix_intro/exercises/1_browsing_textfiles.txt ~/unix_intro/exercises/2_searching_patterns.txt backup
 ```
+
+---------------------------------------------------------------------------------------
 
 ## Secure copy (remote file copy program) `scp`
 
