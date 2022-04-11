@@ -18,14 +18,16 @@ Now, let's **move** `mftf.txt` to `my_first_dir` directory:
 ```
 mv mftf.txt my_first_dir
 ```
+_________________________________________________________________________________________
 
 ## Remove file or directories `rm`
 
 To **delete** (remove) a file or directory we can use the `rm` command.
 Let's delete `mftf.txt` file which we moved to `my_first_dir` but all
-that while being in our home directory. Please, be aware that the
-**shell does not have a trash bin** - so, once something is deleted,
-it's really gone! Be careful what you delete!
+that while being in our home directory. 
+
+!!! tip
+    Be aware that the **shell does not have a trash bin** - so, once something is deleted, it's really gone! Be careful what you delete!
 
 ```
 cd ~

@@ -1,7 +1,7 @@
 # Screen manager
 
 `screen` is a command-line program that we can use to open multiple
-virtual terminals ("windows") inside the same session. Processes that we
+**virtual terminals** ("windows") inside the same session. Processes that we
 started running in `screen` will continue to run when their window is
 not visible, and even if we get disconnected! This comes very handily
 when we are working via ssh on remote machines.
@@ -106,13 +106,14 @@ We can **list** the current running screen sessions with:
 ```
 screen -ls
 ```
-```
-There are screens on:
-        30285.amazing_whales    (04/17/2020 07:19:10 AM)        (Detached)
-        30275.love_whales       (04/16/2020 09:28:50 AM)        (Detached)
-        28591.pts-0.evop-login  (04/14/2020 08:04:53 AM)        (Detached)
-3 Sockets in /run/screen/S-vladimir_bajic.
-```
+??? note "Click to see example output" 
+    ```
+    There are screens on:
+            30285.amazing_whales    (04/17/2020 07:19:10 AM)        (Detached)
+            30275.love_whales       (04/16/2020 09:28:50 AM)        (Detached)
+            28591.pts-0.evop-login  (04/14/2020 08:04:53 AM)        (Detached)
+    3 Sockets in /run/screen/S-vladimir_bajic.
+    ```
 
 If we would like to resume screen called `30275.love_whales`, then we
 would type:
@@ -141,3 +142,6 @@ commands or parameters on screen.
 When outside `screen` you can check for the manual page of `screen`
 command by typing: `man screen`, or you can check the *help page* of
 `screen` command with `screen --help`.
+
+!!! note "Homework"
+    `tmux` is a terminal multiplexer (and an alternative to `screen`). It lets you switch easily between several programs in one terminal, detach them (they keep running in the background), and reattach them to a different terminal. Many consider as more user-friendly than `screen`. Check it out and decide for yourself which one you prefer more ;) 

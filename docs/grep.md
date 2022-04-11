@@ -3,6 +3,8 @@
 `grep` is one of many standard Unix utilities. It searches files for
 specified words or patterns. The `grep` command is *case sensitive*.
 
+___________________________________________________________________________
+
 ## Using `grep` on a single file
 
 The instructions for the `grep` exercises are stored in the
@@ -21,7 +23,6 @@ grep start 2_searching_patterns.txt
 Now the document told us to `grep` the word *"help"* to continue:
 
 ```
-cd unix_intro/exercises
 grep help 2_searching_patterns.txt
 ```
 
@@ -40,14 +41,12 @@ If we do a search for *"ignorecase"* without any option, we only get
 some of the lines.
 
 ```
-cd unix_intro/exercises
 grep ignorecase 2_searching_patterns.txt
 ```
 
 The `-i` option allows to do a **case-insensitive** search.
 
 ```
-cd unix_intro/exercises
 grep -i ignorecase 2_searching_patterns.txt
 ```
 
@@ -55,16 +54,16 @@ To solve the exercise, we also have to **count the number of output
 lines**. This can be done with the `-c` option:
 
 ```
-cd unix_intro/exercises
-grep -i -c ignorecase 2_searching_patterns.txt
+grep -ic ignorecase 2_searching_patterns.txt
 ```
 
 Solution: how to find the instructions for the next exercise
 
 ```
-cd unix_intro/exercises
 grep 21 2_searching_patterns.txt
 ```
+
+___________________________________________________________________________
 
 ## Using `grep` on multiple files
 
@@ -83,6 +82,7 @@ We can use the `*` character to specify multiple files:
 cd unix_intro/exercises
 grep 'regex' multiplefiles/*
 ```
+___________________________________________________________________________
 
 ## Searching multiple patterns with piping system
 

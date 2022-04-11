@@ -2,7 +2,7 @@
 
 This tutorial is based on the previous year's course materials for
 "Programming for Evolutionary Biology" and "Bioinformatics for
-Biologists" (In particular lectures from Giovanni dall'Olio and Alvaro
+Biologists" (In particular lectures from Giovanni Dall'Olio and Alvaro
 Perdomo Sabogal).
 
 In addition, this tutorial was inspired by several other online

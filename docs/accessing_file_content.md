@@ -51,6 +51,30 @@ head -40 1_browsing_textfiles.txt
 
 ------------------------------------------------------------------------
 
+## View the content of a text file one screen at a time `less`
+
+The command `less` writes the contents of a file onto the screen a page
+at a time. Thus, `less` allows browsing the contents of a file,
+read-only, in a modality similar to what we saw with the `man` pages.
+
+We can use ↑, ↓, ←, → to move line-by-line and left and right, or
+`Space` to skip up and down by a full page. To search for a pattern in
+the `less` pages, we can use `/` followed by the pattern we are
+searching for. Sometimes a search will result in multiple hits. If so,
+you can move between hits using `n` (for *next*, for moving to next
+instance) and `p` (for moving to the *previous* instance). To *quit* the
+`less`, press `q`.
+
+Now, open the `1_browsing_textfiles.txt` file with `less`, scroll down
+the file and follow the instructions in the file.
+
+```
+less 1_browsing_textfiles.txt
+```
+
+------------------------------------------------------------------------
+
+
 ## Output the last part of files `tail`
 
 The `tail` command writes the **last** ten lines of a file to the
@@ -130,23 +154,3 @@ wc -l 1_browsing_textfiles.txt
 
 ------------------------------------------------------------------------
 
-## View the content of a text file one screen at a time `less`
-
-The command `less` writes the contents of a file onto the screen a page
-at a time. Thus, `less` allows browsing the contents of a file,
-read-only, in a modality similar to what we saw with the `man` pages.
-
-We can use ↑, ↓, ←, → to move line-by-line and left and right, or
-`Space` to skip up and down by a full page. To search for a pattern in
-the `less` pages, we can use `/` followed by the pattern we are
-searching for. Sometimes a search will result in multiple hits. If so,
-you can move between hits using `N` (for *next*, for moving to next
-instance) and `P` (for moving to the *previous* instance). To *quit* the
-`less`, press `Q`.
-
-Now, open the `1_browsing_textfiles.txt` file with `less`, scroll down
-the file and follow the instructions in the file.
-
-```
-less 1_browsing_textfiles.txt
-```

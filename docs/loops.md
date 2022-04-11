@@ -7,10 +7,8 @@ to productivity improvements through automation. Similar to
 amount of typing required (and hence reduces the number of typing
 mistakes).
 
-Suppose we have several hundred genome data files named `basilisk.dat`,
-`minotaur.dat`, and `unicorn.dat`. For this example, we'll use the
-`~/unix_intro/exercises/creatures` directory which only has three
-example files, but the principles can be applied to many many more files
+Suppose we have several hundred genome data files on which we have to perform the same operation. To illustrate how to automate operation on many files we will focus on the example stored in `~/unix_intro/exercises/creatures` directory which only has three
+example files (`basilisk.dat`, `minotaur.dat`, and `unicorn.dat`), but the same principles can be applied to many many more files
 at once.
 
 The structure of these files is the same: the common name,
@@ -56,8 +54,11 @@ done
 The shell **prompt** changes from `$` to `>` and back again as we were
 typing in our loop. The second prompt `>`, is different to remind us
 that we haven't finished typing a complete command yet. A semicolon `;`,
-can be used to separate two commands written on a single line (i.e.
-`for filename in basilisk.dat minotaur.dat unicorn.dat; do head -n 2 $filename | tail -n 1; done`).
+can be used to separate two commands written on a single line i.e:
+
+```
+for filename in basilisk.dat minotaur.dat unicorn.dat; do head -n 2 $filename | tail -n 1; done
+```
 
 When the shell sees the keyword `for`, it knows to repeat a command (or
 group of commands) once for each item in a list. Each time the loop runs

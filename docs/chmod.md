@@ -1,13 +1,11 @@
 # Change file mode
 
-It could be that some of the scripts we created are not working, not
-because we made a mistake, but because for the file we created we didn't
-enable execution. We can change that with `chmod` command.
+It could be that some of the scripts we created are not working, not because we made a mistake, but because we didn't enable execution for the file we created. We can change that with `chmod` command.
 
 When we use `ls -l` command, we can see various information related to
 file permission:
 
-```{bash, echo = T, eval=T}
+``` bash
 cd unix_intro/exercises
 ls -l
 ```
@@ -62,7 +60,7 @@ For example, to add permission for *everyone to read* a file
 `example.bed` in the directory named `~/unix_intro/exercises/genes`, at
 the Unix prompt, enter:
 
-```{bash, echo = T, eval=F}
+``` bash
 chmod a+r example.bed
 ```
 
@@ -70,7 +68,7 @@ The `a` stands for "all", the `+` for "add", and the `r` for "read". If
 you omit the access class, it's assumed to be all, so you could also
 enter the previous example as:
 
-```{bash, echo = T, eval=F}
+``` bash
 chmod +r example.bed
 ```
 
@@ -79,7 +77,7 @@ For example, to remove read and write permission for group and other
 users (leaving only yourself with read and write permission) on a file
 named myfile, you would enter:
 
-```{bash, echo = T, eval=F}
+``` bash
 chmod go-rw example.bed
 ```
 
@@ -87,7 +85,7 @@ You can also specify that different permissions be added and removed in
 the same command. For example, to remove write permission and add
 execute for all users on `example.bed`, you would enter:
 
-```{bash, echo = T, eval=F}
+``` bash
 chmod a-w+x example.bed
 ```
 
@@ -95,10 +93,10 @@ In each of these examples, the access types that aren't specified are
 unchanged. The previous command, for example, doesn't change any
 existing settings specifying whether users besides yourself may have
 read (`r`) access to `example.bed` You could also use the exact form to
-explicitly state that group and other users' access is set only to read
+explicitly state that group and other users' access is set **only** to read
 with the `=`operator:
 
-```{bash, echo = T, eval=F}
+``` bash
 chmod go=r example.bed
 ```
 
@@ -106,7 +104,7 @@ The `chmod` command also operates on *directories*. For example, to
 *remove write* permission for *other users* on a subdirectory named
 `~/unix_intro/exercises/genes`, you would enter:
 
-```{bash, echo = T, eval=F}
+``` bash
 chmod o-w ~/unix_intro/exercises/genes
 ```
 
@@ -116,17 +114,13 @@ execution permissions for other users to a directory
 \``~/unix_intro/exercises` and all the subdirectories it contains, you
 would enter:
 
-```{bash, echo = T, eval=F}
+``` bash
 chmod -R o+x ~/unix_intro/exercises
 ```
-
-Be careful when setting the permissions of directories, particularly
-your home directory `~`; you don't want to lock yourself out by removing
-your own access!
+!!! tip
+    Be careful when setting the permissions of directories, particularly
+    your home directory `~`; you don't want to lock yourself out by removing
+    your own access!
 
 For more info check `man chmod` or visit this
 [webpage](https://kb.iu.edu/d/abdb).
-
-------------------------------------------------------------------------
-
-<br /><br /><br />

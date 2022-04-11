@@ -29,7 +29,7 @@ mention that some of the files which you might be working on will be
 much bigger than Excel can handle. So get ready to learn basics with
 `awk`!
 
-First, let's take a look at the example of a tabular file (e.g. "GFF3""
+First, let's take a look at the example of a tabular file (e.g. [GFF3](http://www.ensembl.org/info/website/upload/gff3.html#:~:text=GFF3%20File%20Format%20%2D%20Definition%20and,on%20the%20Version%203%20specifications.)
 format). We can find it in `~/unix_intro/exercises/genes`.
 
 ```
@@ -97,7 +97,6 @@ while `$0` refers to all columns).
 Now, let's check this example and see how `awk` processes it:
 
 ```
-cd ~/unix_intro/exercises/genes
 awk '{print $1}' chr8.gff
 ```
 
@@ -114,7 +113,6 @@ option, and if we want to specify more than one we can separate them
 with `|` (e.g. `-F"=|;"`):
 
 ```
-cd ~/unix_intro/exercises/genes
 awk -F"=|;" '{print $2}' chr8.gff
 ```
 
@@ -148,6 +146,8 @@ the code:
 
     awk '$4 > 146098183 {print $0}' chr8.gff | head
 
+------------------------------------------------------------------------
+
 ## And/Or/Not
 
 We can combine conditional expressions with the "or" or "and" operators:
@@ -161,7 +161,6 @@ Now imagine that we need to extract the lines belonging to chromosome 8,
 between the coordinates 100000 and 200000. We can do that like this:
 
 ```
-cd ~/unix_intro/exercises/genes
 awk '$1=="chr8" && $4 > 100000 && $5 < 200000' chr8.gff
 ```
 
@@ -183,7 +182,6 @@ and third*. We can **pipe** the output to `head` or `less`, to make it
 easier to visualize:
 
 ```
-cd ~/unix_intro/exercises/genes
 awk '{print $1, $5-$4}' chr8.gff | head
 ```
 
@@ -200,18 +198,20 @@ For example, the following code will print all the lines in which the
 symbol starts with *"MIR"*:
 
 ```
-cd ~/unix_intro/exercises/genes
 awk '$9 ~ /symbol=MIR/ {print $0}' chr8.gff | head
 ```
 
 Now let's remove the header of the file:
 
 ```
-cd ~/unix_intro/exercises/genes
 awk '$0 !~ /#/' chr8.gff | head
 ```
 
-or even shorter: `awk '!/#/' chr8.gff`
+or even shorter: 
+
+```
+awk '!/#/' chr8.gff
+```
 
 !!! question "Task"
     a)  Calculate the **length** of the gene **POU5F1B** in `chr8.gff` file.<br /><br />

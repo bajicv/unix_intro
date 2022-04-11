@@ -38,13 +38,13 @@ list of pathnames matching the pattern.
 
 ------------------------------------------------------------------------
 
--   `?` <br />represents **any single character**. <br /> e.g. for `hd?`
+-   `?`  <br />represents **any single character**. <br /> e.g. for `hd?`
     Linux would look for `hda`, `hdb`, `hdc` and every other
     letter/number between a-z, 0-9.
 
 ------------------------------------------------------------------------
 
--   `*` <br />represents **any number of characters including none**,
+-   `*`  <br />represents **any number of characters including none**,
     (in other words zero or more characters). <br /> e.g. If we specify
     a `cd*` it would use `cda`, `cdrom`, `cdrecord` and anything that
     starts with `cd` also including `cd` itself. `m*l` could by `mill`,
@@ -72,7 +72,7 @@ list of pathnames matching the pattern.
 
 ------------------------------------------------------------------------
 
--   `[!]` <br />This construct is similar to the `[ ]` construct, except
+-   `[!]`  <br />This construct is similar to the `[ ]` construct, except
     rather than matching any characters inside the brackets, it'll
     **match any character that is not listed in the brackets**. This is
     a **logical NOT**. <br />e.g. `rm myfile[!9]` will remove all files
@@ -99,8 +99,7 @@ pattern would give us `1_browsing_textfiles.txt`,
     <br />a) `ls *.*` 
     <br />b) `ls *b*` 
     <br />c) `ls *.b*` 
-    <br />d)
-    `ls ??a*` 
+    <br />d) `ls ??a*` 
     <br />e) `ls *a*e*b*`
     
     ??? note "Click for Answer"
@@ -150,8 +149,7 @@ manual page type: `man regex`.
 
 ------------------------------------------------------------------------
 
--   `.*`\
-    <br />matches any character, any number of times, it is equivalent
+-   `.*` <br />matches any character, any number of times, it is equivalent
     to `*` in standard wildcards. <br />e.g. `m.*` mathces anything
     starting with `m`
 
@@ -162,20 +160,18 @@ manual page type: `man regex`.
 
 ------------------------------------------------------------------------
 
--   `^`\
+-   `^`
     <br />matches the beginning of the line. <br />e.g. `^a` matches a
     line starting with an `a`.
 
 ------------------------------------------------------------------------
 
--   `$`\
-    <br />matches the end of the line. <br />e.g. `a$` matches a line
+-   `$` <br />matches the end of the line. <br />e.g. `a$` matches a line
     ending with an `a`.
 
 ------------------------------------------------------------------------
 
--   `|`\
-    <br /> performs a **logical OR relationship between wildcards**. We
+-   `|` <br /> performs a **logical OR relationship between wildcards**. We
     can use it to search for something or something else (possibly using
     two different regular expressions). We may need to add a `\`
     (backslash) before this command to work, because the shell may
@@ -184,8 +180,7 @@ manual page type: `man regex`.
 
 ------------------------------------------------------------------------
 
--   `[^]`\
-    <br /> matches anything that is **not** listed within square
+-   `[^]` <br /> matches anything that is **not** listed within square
     brackets. It is the equivalent of `[!]` in standard wildcards.
     <br />e.g. `rm myfile[^9]` will remove all `myfiles*` (i.e.
     `myfiles1`, `myfiles2` etc.) but won't remove a file with the number

@@ -79,14 +79,25 @@ cd  ~/unix_intro/exercises/multiplefiles
 wc -w *.txt | sort -n | head -n 1
 ```
 
+!!! note "Task"
+    Using the logic above (_with pipes_) find the file with the smallest number of words.
+
+    ??? note "Click for Answer"
+        ```
+        wc -w *.txt | sort | head -1
+        ```
+        or
+        ```
+        wc -w *.txt | sort -r | tail -1
+        ```
+
 ------------------------------------------------------------------------
 
-## Filters
-
-A **filter** is a program (e.g. `wc`, `sort`, `grep`, `uniq`, `cat`,
-`head`, `tale`...) that transforms a stream of input into a stream of
-output. Almost all of the standard Unix tools can work this way: unless
-told to do otherwise, they read from standard input, do something with
-what they've read, and write to standard output.
+!!! note
+    A **filter** is a program (e.g. `wc`, `sort`, `grep`, `uniq`, `cat`,
+    `head`, `tale`...) that transforms a stream of input into a stream of
+    output. Almost all of the standard Unix tools can work this way: unless
+    told to do otherwise, they read from standard input, do something with
+    what they've read, and write to standard output.
 
 ------------------------------------------------------------------------

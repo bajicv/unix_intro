@@ -47,7 +47,7 @@ special variable called `$1`:
 Inside a shell script, `$1` means **the first filename (or other
 arguments) on the command-line**. We can now run our script like this:
 
-    bash my_first_sh_script.sh octane.pdb
+    bash my_first_sh_script.sh unicorn.dat
 
 We still need to edit `my_first_sh_script.sh` each time we want to
 adjust the range of lines, though. Let's fix that by using the special
@@ -60,7 +60,7 @@ correct the code to look like this:
 Now we can test it (extract first 2 lines with `head` and only the last
 one of those 2 with `tail` to get classification):
 
-    bash my_first_sh_script.sh octane.pdb 2 1
+    bash my_first_sh_script.sh unicorn.dat 2 1
 
 So it seems that now script works, but it may take the next person who
 reads `my_first_sh_script.sh` a moment to figure out what it does. We
