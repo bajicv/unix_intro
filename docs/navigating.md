@@ -322,7 +322,7 @@ find . -name 1_browsing_textfiles.txt
     ```
 
 !!! tip "Homework"
-    How can you gett the absolute path to a directory (e.g. `exercises` directory)?
+    How can you get the absolute path to a directory (e.g. `exercises` directory)?
 
     ??? tip "Click to see the answer"
         Try finding the answer [here](https://www.baeldung.com/linux/absolute-directory-of-file)
