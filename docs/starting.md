@@ -69,7 +69,7 @@ install at the beginning (from here on we assume you are using
 So, let's do it! First, we have to open the terminal as described before and then we have to type:
 
 ``` bash
-ssh -J YourID@andorra.imp.fu-berlin.de evop-login
+ssh -J YourID@andorra.imp.fu-berlin.de YourID@evop-login
 ```
 [SSH](https://wiki.gentoo.org/wiki/SSH) (**S**ecure **SH**ell) is the ubiquitous tool for logging into and working on remote machines securely. All sensitive information is strongly encrypted, and in addition to the remote shell, SSH supports file transfer, and port forwarding for arbitrary protocols, allowing secure access to remote services. 
 
