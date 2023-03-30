@@ -26,23 +26,24 @@ markdown_extensions:
 
 # Pages  
 nav:
-    - Home: index.md
-    - Background: background.md
-    - Starting UNIX terminal: starting.md
-    - Navigating Files and Directories: navigating.md
-    - Making Files and Directories: making_files_and_dirs.md
-    - Copying files and directories locally and remotely: cp_scp.md
-    - Moving, renaming and removing files and directories: mv.md
-    - Accessing the content of a file: accessing_file_content.md
-    - Pipes and Filters: pipes_filters.md
-    - Wildcards and Regular Expressions (regex): regex.md
-    - Print lines matching a pattern: grep.md
-    - Working with tabular files: tabular_files.md
-    - Loops: loops.md
-    - Shell Scripts: scripts.md
-    - Change file mode: chmod.md
-    - Screen manager: screen.md
-    - Other useful Unix commands: extra.md
-    - References: references.md
+    - Home: 01_index.md
+    - Background: 02_background.md
+    - Starting terminal: 03_starting.md
+    - Shell syntax: 04_shell_syntax.md
+    - Navigating Files and Directories: 05_navigating.md
+    - Making Files and Directories: 06_making_files_and_dirs.md
+    - Copying files and directories locally and remotely: 07_cp_scp.md
+    - Moving, renaming and removing files and directories: 08_mv.md
+    - Accessing the content of a file: 09_accessing_file_content.md
+    - Pipes and Filters: 10_pipes_filters.md
+    - Wildcards and Regular Expressions (regex): 11_regex.md
+    - Print lines matching a pattern: 12_grep.md
+    - Working with tabular files: 13_tabular_files.md
+    - Loops: 14_loops.md
+    - Shell Scripts: 15_scripts.md
+    - Change file mode: 16_chmod.md
+    - Screen manager: 17_screen.md
+    - Other useful Unix commands: 18_extra.md
+    - References: 19_references.md
 
 
