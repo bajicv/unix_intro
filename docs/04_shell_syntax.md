@@ -291,7 +291,7 @@ searching it on the internet! Google it!
 
 Or make some use of AI!
 
-![ChatGPT it](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB6xrpqk3BUT-UnmZMViACtTqaa98UFaYMZg&usqp=CAU)
+![ChatGPT it](https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2023-01/230127-chatgpt-coding-le-1212-d31c75.jpg){width="100%"}
 
 
 ------------------------------------------------------------------------
