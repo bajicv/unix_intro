@@ -47,59 +47,8 @@ function openTab(evt, tabName) {
 }
 </style>
 
-# Starting terminal
 
-## OS native terminal
-
-An operating system's native terminal is a command-line interface (CLI) provided by the operating system itself, allowing users to interact with the system using text-based commands. The native terminal provides a powerful and efficient way to manage files, run scripts, and execute commands on your computer, and is often preferred by advanced users and developers over graphical user interfaces (GUIs) due to its flexibility and customization options.
-
-### Opening OS native terminal
-
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'tab1')">Windows</button>
-  <button class="tablinks" onclick="openTab(event, 'tab2')">Mac</button>
-  <button class="tablinks" onclick="openTab(event, 'tab3')">Linux</button>
-</div>
-
-<div id="tab1" class="tabcontent">
-  <p>Unfortunately, Windows comes with <b>Command prompt</b> or <b>Windows PowerShell</b> which is not of interest for us. However, there are many possibilities for us who have Windows OS to use Unix like terminal (e.g. Tabby, MobaXterm, Ubuntu on Windows 10, Babun, Putty Manager, Cygwin, and many others)! For this tutorial we will use <b>Tabby</b>.</p>
-</div>
-
-<div id="tab2" class="tabcontent">
-  <p>The Mac command-line is a program called <b>Terminal</b>. It is located in the <b>/Applications/Utilities/</b> folder. To find it, go to your <b>Applications</b> folder. Near the bottom, you should find a folder called <b>Utilities</b>. Go inside, and one of the applications listed is called <b>Terminal</b>. Double-click that application to open it.</p>
-</div>
-
-<div id="tab3" class="tabcontent">
-  <p>To find it, click on <b>Applications</b> and search for <b>Terminal</b> or <b>Konsole</b>. Go ahead and open the <b>command-line</b>. When you open it you will see a new window, with a simple <b>prompt</b> which indicates that the shell is ready for the input.</p>
-</div>
-
-------------------------------------------------------------------------
-
-### Connecting to `evop-login` server using `ssh`
-
-We will do most of our exercises on the remote computers (physically located outside of your homes :)) using the `evop-login.imp.fu-berlin.de` server. We can access them through the terminal (or terminal emulator). For the sake of testing the capabilities of your OS's native terminals (Windows, Mac, or Linux), we will execute the following command in your OS's native terminal.
-
-So, let's do it! First, we have to open the terminal and then we have to type:
-
-```
-ssh -J YourID@andorra.imp.fu-berlin.de YourID@evop-login
-```
-
-[SSH](https://wiki.gentoo.org/wiki/SSH) (**S**ecure **SH**ell) is the ubiquitous tool for logging into and working on remote machines securely. All sensitive information is strongly encrypted, and in addition to the remote shell, SSH supports file transfer, and port forwarding for arbitrary protocols, allowing secure access to remote services. 
-
-Two `ssh` options important for us are: 
-- `-J` which allows us to jump through a host (from host1 to host2, in our case from `andorra` to `evop-login`).
-- `-X` which allows us to execute **graphical** applications remotely. Runing graphical applications remotely is very demanding for the network, so by default, we will NOT use this option during this tutorial.
-
-In addition to the main `ssh` command, the SSH suite of programs includes tools such as:
-
-* `scp` - Secure Copy Program (which we will be using), 
-* `sftp` - Secure File Transfer Protocol, or 
-* `ssh-agent` to help with key management.
-
-------------------------------------------------------------------------
-
-## Tabby
+# Tabby
 
 Considering that you are using different kinds of OS we will use the Tabby terminal app which runs on Windows, Mac, and Linux. This way everyone will be able to follow tutorials without much difficulty (hopefully). And tabby will make it easier for you to download and upload files from/to a remote server (pay attention to step 8 described below).
 
@@ -109,9 +58,9 @@ Considering that you are using different kinds of OS we will use the Tabby termi
 
 ------------------------------------------------------------------------
 
-### Installation
+## Installation
 
-Follow [this YouTube tutorial for installing Tabby on Windows/Linux/MacOS](https://www.youtube.com/watch?v=G03-5RE0ohg&t=2s). You can also find short summary of the steps below.
+Follow the steps below to install Tabby. If you have troubles you can take a look at [this YouTube tutorial](https://www.youtube.com/watch?v=G03-5RE0ohg&t=2s). 
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'tab4')">Windows</button>
@@ -121,9 +70,9 @@ Follow [this YouTube tutorial for installing Tabby on Windows/Linux/MacOS](https
 
 <div id="tab4" class="tabcontent">
   <p>1. Go to <a href="https://github.com/Eugeny/tabby/releases/tag/v1.0.196">https://github.com/Eugeny/tabby/releases/tag/v1.0.196</a>. <br/> 
-     2. Click on <b>tabby-1.0.196-setup-x64.exe</b>. <br/>
-     3. Once <b>tabby-1.0.196-setup-x64.exe</b> is downloaded double-clicking on it and install it. <br/>
-     4. To start the program search for app <b>Tabby Terminal</b>.</p>
+     1. Click on <b>tabby-1.0.196-setup-x64.exe</b>. <br/>
+     2. Once <b>tabby-1.0.196-setup-x64.exe</b> is downloaded double-clicking on it and install it. <br/>
+     3. To start the program search for app <b>Tabby Terminal</b>.</p>
 </div>
 
 <div id="tab5" class="tabcontent">
@@ -143,7 +92,7 @@ Follow [this YouTube tutorial for installing Tabby on Windows/Linux/MacOS](https
 
 ------------------------------------------------------------------------
 
-### Setting up `evop-login` connection in Tabby
+## Setting up `evop-login` connection in Tabby
 
 Luckily Tabby allows us to save connections so we can easily access them.
 

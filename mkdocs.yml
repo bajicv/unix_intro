@@ -29,9 +29,9 @@ markdown_extensions:
 
 # Pages  
 nav:
-    - Home: 01_index.md
-    - Background: 02_background.md
-    - Starting terminal: 03_starting.md
+    - Background: 01_background.md
+    - Starting terminal: 02_starting.md
+    - Tabby: 03_tabby.md
     - Shell syntax: 04_shell_syntax.md
     - Navigating Files and Directories: 05_navigating.md
     - Making Files and Directories: 06_making_files_and_dirs.md
@@ -49,9 +49,9 @@ nav:
     - Other useful Unix commands: 18_extra.md
     - References: 19_references.md
 
-extra_css:
-  - css/extra.css
+#extra_css:
+#  - css/extra.css
 
-extra_javascript:
-  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
-  - javascripts/details.js
+#extra_javascript:
+#  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+#  - javascripts/details.js

@@ -277,6 +277,8 @@ To *quit* the `man` pages, press `q`.
 !!! question "Task"
     Find in the manual of `grep` what we can do with option `-v`
 
+------------------------------------------------------------------------
+
 ### Google it!
 
 And finally, the most important way to find help for commands is
@@ -284,8 +286,7 @@ searching it on the internet! Google it!
 
 ![Google it](https://media.darpanmagazine.com/library/uploads/news/content/google-it2.jpg){width="100%"}
 
-!!! question "Task"
-    Goole _"How do you list only files not directories in Linux?"_
+------------------------------------------------------------------------
 
 ### ChatGPT it!
 
@@ -293,5 +294,8 @@ Or make some use of AI!
 
 ![ChatGPT it](https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2023-01/230127-chatgpt-coding-le-1212-d31c75.jpg){width="100%"}
 
+
+!!! question "Task"
+    Goole and ChatGPT _"How do you list only files not directories in Linux?"_
 
 ------------------------------------------------------------------------
