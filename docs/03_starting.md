@@ -169,7 +169,11 @@ Luckily Tabby allows us to save connections so we can easily access them.
 
 ![Step 7](pics/Tabby_Step_07.png)
 
-8 - To allow Tabby's `SFTP` to open our working directory we need to add a line of code in our `.bashrc` file. You can open it by typing `nano ~/.bashrc` and then go to the very end and paste: `export PS1="$PS1\[\e]1337;CurrentDir="'$(pwd)\a\]'`. Exit by pressing `Ctrl+X` and then type `Y` to save changes and press `Enter` to close the file.
+8 - To allow Tabby's `SFTP` to open our working directory we need to add a line of code in our `.bashrc` file. <br/>
+You can open it by typing: `nano ~/.bashrc`. <br/>
+When in nano scroll to the very end and paste (or type): <br/>
+`export PS1="$PS1\[\e]1337;CurrentDir="'$(pwd)\a\]'`. <br/>
+Exit by pressing `Ctrl+X` and then type `Y` to save changes and press `Enter` to close the file.
 
 9 - Now when we open new tab with `evop-login` we will be able to see files and directories in our working directory when we click on `SFTP` located in upper right corner. This way we can easily download files from server to our local computers, and upload files from our local computers to evop-login server.
 
