@@ -106,7 +106,11 @@ Follow [this YouTube tutorial for installing Tabby on Windows/Linux/MacOS](https
 </div>
 
 <div id="tab6" class="tabcontent">
-  <p> <a href="https://linux.how2shout.com/how-to-install-tabby-terminal-on-ubuntu-22-04-linux/">How to install Tabby Terminal on Ubuntu 22.04 Linux</a>. </p>
+  <p>1. Go to <a href="https://github.com/Eugeny/tabby/releases/tag/v1.0.196">https://github.com/Eugeny/tabby/releases/tag/v1.0.196</a>. <br/>   
+     2. Click on <b>tabby-1.0.196-linux-x64.deb</b> to download it. <br/>
+     3. Install it in command line by typing: <b>sudo dpkg -i tabby-1.0.196-linux-x64.deb</b>.<br/>
+     4. To start the program type: <b>tabby</b> in command line and press enter.<br/><br/>
+      If you still have problems try following these steps: <a href="https://linux.how2shout.com/how-to-install-tabby-terminal-on-ubuntu-22-04-linux/">How to install Tabby Terminal on Ubuntu 22.04 Linux</a>. </p>
 </div>
 
 ---
