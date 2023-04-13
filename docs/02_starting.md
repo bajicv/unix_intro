@@ -84,8 +84,10 @@ ssh -J YourID@andorra.imp.fu-berlin.de YourID@evop-login
 [SSH](https://wiki.gentoo.org/wiki/SSH) (**S**ecure **SH**ell) is the ubiquitous tool for logging into and working on remote machines securely. All sensitive information is strongly encrypted, and in addition to the remote shell, SSH supports file transfer, and port forwarding for arbitrary protocols, allowing secure access to remote services. 
 
 Two `ssh` options important for us are: 
-- `-J` which allows us to jump through a host (from host1 to host2, in our case from `andorra` to `evop-login`).
-- `-X` which allows us to execute **graphical** applications remotely. Runing graphical applications remotely is very demanding for the network, so by default, we will NOT use this option during this tutorial.
+
+- `-J` which allows us to jump through a host (from host1 to host2, in our case from `andorra` to `evop-login`). 
+
+- `-X` which allows us to execute **graphical** applications remotely. Runing graphical applications remotely is very demanding for the network, so by default, we will NOT use this option during this tutorial. 
 
 In addition to the main `ssh` command, the SSH suite of programs includes tools such as:
 
