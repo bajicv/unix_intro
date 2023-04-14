@@ -22,16 +22,7 @@ wc -l *.txt > ~/lengths.txt
 
 ## Append `>>`
 
-We have seen the use of `>`, but there is a similar operator `>>` which
-works slightly differently. We'll learn about the differences between
-these two operators by printing some strings. We can use the `echo`
-command to print strings e.g.
-
-```
-echo 'I absolutely adore WHALES and echo command helps me in expressing my love for them!'
-```
-
-Now run each of the commands twice to reveal the difference between `>`
+We have seen the use of `>`, but there is a similar operator `>>` which works slightly differently. We'll learn about the differences between these two operators by printing some strings. We can use the `echo` command to print strings e.g. `echo 'I love whales!'`. Now run each of the commands twice to reveal the difference between `>`
 and `>>`:
 
 ```
@@ -42,7 +33,6 @@ echo 'I love whales!' > ~/redirect.txt
 and:
 
 ```
-rm ~/append.txt
 echo 'I love whales!' >> ~/append.txt
 echo 'I love whales!' >> ~/append.txt
 ```
