@@ -96,6 +96,16 @@ Now move to the **parent directory** and do `ls`:
 cd ..
 ls
 ```
+
+We can move to the **previous directory** with:
+
+```
+cd -
+```
+
+!!! question
+    What happens when go to your home directory from `/opt/evop/public/BIOINFORMATICS/unix_intro/exercises` and then you type `cd -` while in home directory?
+
 ------------------------------------------------------------------------
 
 ## Absolute vs Relative Paths
@@ -219,10 +229,9 @@ some of them.
 
 The first option in our list is `-type d` that means **things that are
 directories**. `find` will output names of all directories in our
-current working directory `~/unix_intro/exercises`:
+current working directory:
 
 ```
-cd ~/unix_intro/exercises
 find . -type d
 ```
 
@@ -239,7 +248,6 @@ order. If we change `-type d` to `-type f`, we get a listing of all the
 **files** instead:
 
 ```
-cd ~/unix_intro/exercises
 find . -type f
 ```
 
@@ -312,7 +320,6 @@ find . -type f
 Now let's try **matching by name**:
 
 ```
-cd ~/unix_intro/exercises
 find . -name 1_browsing_textfiles.txt
 ```
 

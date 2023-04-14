@@ -30,10 +30,9 @@ The general syntax of a shell command follows this logic:
     by `+` or `-`
 -   <span style="color:green">Arguments</span> give more information to the
     command such as the exact location of the input file, or the exact
-    location where the output file should be saved. Sometimes options
-    and arguments are referred to as **parameters**. A command can be
-    called with more than one option and more than one argument: but a
-    command doesn't always require an argument or an option.
+    location where the output file should be saved. 
+    
+Sometimes <span style="color:blue">options</span> and <span style="color:green">arguments</span> are referred to as **parameters**. A command can be called with more than one option and more than one argument: but a command doesn't always require an argument or an option.
 
 So by typing: <span style="color:red">ls</span> <span style="color:blue">-l</span> <span style="color:green">/</span>
 
@@ -50,7 +49,7 @@ Command **options** either start with a single dash `-`
 (single-character options) or two dashes `--` (long options), and they
 are changing the behavior of a command. Single-character options use a
 space as a separator from their parameter, while the long options use
-"=" (e.g. single-character option: `-0 value`; long option:
+"=" (e.g. single-character option: `-o value`; long option:
 `--option=value`). We can combine single-character options like this:
 `ls -ltr` where `-ltr` are 3 different options `-l`, `-t`, and `-r`.
 Some commands have a lot of options, such as `ls`, and thus it can be
