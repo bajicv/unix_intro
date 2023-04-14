@@ -71,12 +71,12 @@ scp -rJ YourID@andorra.imp.fu-berlin.de YourID@evop-login.imp.fu-berlin.de:~/uni
 Please note that here we are using our current directory (`.`) at our local computers as the location to which the file will be copied, and since we are already logged-in to our computers we do not need to print the entire paths such as `username2@destination_host:directory2/filename2`. We use option `-J` to specify `andorra` as jump host (similar to what we did with `ssh`), and `-r` option to be able to copy directory and files in it. 
 
 
-## SFTP with Tabby
+### SFTP with Tabby
 
 Since we are using Tabby we can also use Secure File Transfer Protocol (SFTP) option. All we need to do is click on the SFTP icon in the upper right corner and select the files or directories we want to download on our local machine. Unfortunately, it is still not possible to download entire directories using SFTP in Tabby.
 
 
-## WinSCP and Putty for Windows
+### WinSCP and Putty for Windows
 
 In case we want to copy files and directories to a Windows machine, without using the WindowsPowerShell or [WSL](https://learn.microsoft.com/en-us/windows/wsl/install), we can do it using [WinSCP](https://winscp.net/eng/download.php) or [Putty](https://www.putty.org/).
 

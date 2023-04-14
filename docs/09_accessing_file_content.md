@@ -19,7 +19,6 @@ lines to be printed out. Let's use `-n 40` option to print the first 40
 lines of this file:
 
 ```
-cd ~/unix_intro/exercises
 head -n 40 1_browsing_textfiles.txt
 ```
 
@@ -29,7 +28,6 @@ and the integer (with no intervening space) are sufficient to tell
 same result as the above commands:
 
 ```
-cd ~/unix_intro/exercises
 head -40 1_browsing_textfiles.txt
 ```
 
@@ -82,9 +80,14 @@ screen. Same as for the `head`, we can specify how many lines we want
 `tail` to print out. So, let's print last 12 lines of the same file:
 
 ```
-cd ~/unix_intro/exercises
 tail -12 1_browsing_textfiles.txt
 ```
+
+The `tail -f` command in can be used to display the contents of a file (e.g. a log file) in real-time as new data is added to it. The `tail` command displays the last few lines of a file by default, but when used with the `-f` option, it will continue to monitor the file and display any new lines as they are added to the file.
+
+For example, if you are monitoring a log file and want to see any new log entries in real-time, you can use the `tail -f` command to display the contents of the file continuously as new data is appended to it. This can be helpful for monitoring system events or troubleshooting issues that are logged in a file.
+
+To exit the `tail -f` command, you can use the `Ctrl+C` keyboard shortcut to interrupt the monitoring and return to the command prompt.
 
 ------------------------------------------------------------------------
 
@@ -95,7 +98,6 @@ file on the screen. The name is derived from its function to
 *concatenate* files.
 
 ```
-cd ~/unix_intro/exercises
 cat 1_browsing_textfiles.txt
 ```
 
@@ -106,15 +108,7 @@ The `cat` command can be very useful to **concatenate** multiple files.
 Let's concatenate two text files and write them to a new file:
 
 ```
-cd ~/unix_intro/exercises
 cat 1_browsing_textfiles.txt 2_searching_patterns.txt > new_cat_1_2_file.txt
-```
-
-We can also **append** the contents of `2_searching_patterns.txt` to
-`01_browsing_textfiles.txt`:
-
-```
-cat 2_searching_patterns.txt >> 01_browsing_textfiles.txt
 ```
 
 !!! question
@@ -131,8 +125,15 @@ cat 2_searching_patterns.txt >> 01_browsing_textfiles.txt
 
 ## Word count `wc`
 
-Besides doing `cat -n` we can use very handy `wc` command, short for
-*word count*.
+Besides doing `cat -n` we can use very handy `wc` command, short for *word count*.
+
+To count the number of lines, words, and characters in a file  `1_browsing_textfiles.txt` we can type:
+
+```
+wc 1_browsing_textfiles.txt
+```
+
+This output indicates that `1_browsing_textfiles.txt` contains 90 lines, 328 words, and 3283 characters. 
 
 To do a **word count** on `1_browsing_textfiles.txt` we can type:
 
@@ -150,7 +151,11 @@ wc -l 1_browsing_textfiles.txt
     Which option of the `wc` command you will use to find out how many **characters** there are in `1_browsing_textfiles.txt`?
     
     ??? note "Click for Answer"
-        `wc -m 1_browsing_textfiles.txt` gives 2642 characters.
+        Both `wc -c` and `wc -m` give 3283 characters.
+
+!!! tip "Homework"
+    Create a new file called `testing_wc_cm.txt` with `nano` and write in it `Straße`. Once you save it do `wc -cm testing_wc_cm.txt`. Explain why the numbers are different.
+
 
 ------------------------------------------------------------------------
 
