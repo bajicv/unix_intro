@@ -118,11 +118,13 @@ Luckily Tabby allows us to save connections so we can easily access them.
 
 <b>6</b> - Click on `Connection` and in the drop-down menu select `Jump host`. In the newly appeared field `Jump host` select `andorra`. Fill in the rest of the fields `Name: evop-login`, `Host: evop-login.imp.fu-berlin.de`, and `Username: your_ZEDAT_username`, and press `Save`.
 
-<b>7</b> - Click on newly created `andorra` ssh connection.
+![Step 6](pics/Tabby_Step_06.png)
+
+<b>7</b> - X11 forwarding is a mechanism that allows a user to start up remote applications, and then forward the application display to their local machine. To allow X11 forwarding click on newly created `andorra` ssh connection.
 
 ![Step 7](pics/Tabby_Step_07.png)
 
-<b>8</b> - Click on `Advanced` tab and enable `X11 forwarding` and then save.
+<b>8</b> - Click on `Advanced` tab and enable `X11 forwarding` and then `Save`.
 
 ![Step 8](pics/Tabby_Step_08.png)
 
@@ -130,7 +132,7 @@ Luckily Tabby allows us to save connections so we can easily access them.
 
 ![Step 9](pics/Tabby_Step_09.png)
 
-<b>10</b> - Click on `Advanced` tab and enable `X11 forwarding` and then save.
+<b>10</b> - Click on `Advanced` tab and enable `X11 forwarding` and then `Save`.
 
 ![Step 10](pics/Tabby_Step_10.png)
 
