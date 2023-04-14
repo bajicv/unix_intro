@@ -58,7 +58,15 @@ An operating system's native terminal is a command-line interface (CLI) provided
 </div>
 
 <div id="tab1" class="tabcontent">
-  <p>Unfortunately, Windows comes with <b>Command prompt</b> or <b>Windows PowerShell</b> which is not of interest for us. However, there are many possibilities for us who have Windows OS to use Unix like terminal (e.g. Tabby, MobaXterm, Babun, Putty Manager, Cygwin, and many others)! For this tutorial we will use <b>Tabby</b>. I recommend you to install WSL (Windows Subsystem for Linux) which is a feature of Windows that allows us to run a Linux environment without the need for a separate virtual machine. Folow <a href="https://learn.microsoft.com/en-us/windows/wsl/install">this tutorial on how to do it</a>.</p>
+  <p>Unfortunately, Windows comes with <b>Command prompt</b> and <b>Windows PowerShell</b> which are not of interest for us. 
+  
+  While Windows PowerShell has its own set of commands, it is designed to support many common Linux commands and tools, especially those commonly used in shell scripts. Some of the most commonly used Linux commands like cd, ls, cat, rm, cp, mv, mkdir, etc. can be used in PowerShell with similar functionality.
+  
+  However, there may be some differences in syntax or behavior, so it is important to consult the PowerShell documentation or help system to understand how to use Linux commands within PowerShell.
+  
+  Additionally, some Linux commands may not be available or may have different behavior in PowerShell, so it's important to be aware of these differences and adjust your approach as necessary.
+  
+  However, there are many possibilities for us who have Windows OS to use Unix like terminal (e.g. Tabby, MobaXterm, Babun, Putty Manager, Cygwin, and many others)! For this tutorial we will use <b>Tabby</b>. I recommend you to install WSL (Windows Subsystem for Linux) which is a feature of Windows that allows us to run a Linux environment without the need for a separate virtual machine. Folow <a href="https://learn.microsoft.com/en-us/windows/wsl/install">this tutorial on how to do it</a>.</p>
 </div>
 
 <div id="tab2" class="tabcontent">

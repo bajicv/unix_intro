@@ -62,7 +62,7 @@ The location to which the source file will be copied is specified by `username2@
 -   A filename of the copy (`filename2`)
 
 
-To copy files from a remote server on our local machines using the command line we need to open our OS's native terminal (e.g. `Terminal` for MacOS and Linux, or  `Command prompt` or `Windows PowerShell` for Windows). Once we open it we can type:
+To copy files from a remote server on our local machines using the command line we need to open our OS's native terminal (e.g. `Terminal` for MacOS and Linux, or `Windows PowerShell` for Windows). Once we open it we can type:
 
 ```
 scp -rJ YourID@andorra.imp.fu-berlin.de YourID@evop-login.imp.fu-berlin.de:~/unix_intro .
