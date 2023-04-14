@@ -70,9 +70,9 @@ Follow the steps below to install Tabby. If you have troubles you can take a loo
 
 <div id="tab4" class="tabcontent">
   <p>1. Go to <a href="https://github.com/Eugeny/tabby/releases/tag/v1.0.196">https://github.com/Eugeny/tabby/releases/tag/v1.0.196</a>. <br/> 
-     1. Click on <b>tabby-1.0.196-setup-x64.exe</b>. <br/>
-     2. Once <b>tabby-1.0.196-setup-x64.exe</b> is downloaded double-clicking on it and install it. <br/>
-     3. To start the program search for app <b>Tabby Terminal</b>.</p>
+     2. Click on <b>tabby-1.0.196-setup-x64.exe</b>. <br/>
+     3. Once <b>tabby-1.0.196-setup-x64.exe</b> is downloaded double-clicking on it and install it. <br/>
+     4. To start the program search for app <b>Tabby Terminal</b>.</p>
 </div>
 
 <div id="tab5" class="tabcontent">
