@@ -58,7 +58,7 @@ An operating system's native terminal is a command-line interface (CLI) provided
 </div>
 
 <div id="tab1" class="tabcontent">
-  <p>Unfortunately, Windows comes with <b>Command prompt</b> or <b>Windows PowerShell</b> which is not of interest for us. However, there are many possibilities for us who have Windows OS to use Unix like terminal (e.g. Tabby, MobaXterm, Ubuntu on Windows 10, Babun, Putty Manager, Cygwin, and many others)! For this tutorial we will use <b>Tabby</b>.</p>
+  <p>Unfortunately, Windows comes with <b>Command prompt</b> or <b>Windows PowerShell</b> which is not of interest for us. However, there are many possibilities for us who have Windows OS to use Unix like terminal (e.g. Tabby, MobaXterm, Babun, Putty Manager, Cygwin, and many others)! For this tutorial we will use <b>Tabby</b>. I recommend you to install WSL (Windows Subsystem for Linux) which is a feature of Windows that allows us to run a Linux environment without the need for a separate virtual machine. Folow <a href="https://learn.microsoft.com/en-us/windows/wsl/install">this tutorial on how to do it</a>.</p>
 </div>
 
 <div id="tab2" class="tabcontent">

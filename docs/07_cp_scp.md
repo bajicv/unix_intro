@@ -14,7 +14,7 @@ Let's copy our first `touch` file and name it same but with adding
 
     ??? question "Click for Answer"
         ```
-        cp my_first_touch_file.txt my_first_touch_file_copy.txt
+        cp my_first_touch_file.txt ~/my_first_dir/my_first_touch_file_copy.txt
         ```
 
 

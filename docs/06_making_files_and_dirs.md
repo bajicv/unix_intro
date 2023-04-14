@@ -83,7 +83,7 @@ Here are some of the useful `nano` commands:
 | `Alt`+`^`          | copy        |
 | `Ctrl`+`U`         | paste       |
 
-Now let's type something (e.g. *"Can't wait for quarantine to end"*) and
+Now let's type something (e.g. *"I love whales!"*) and
 press `Ctrl`+`X`. This will close the file, but `nano` will offer us to
 save it. When `nano` asks as if we want to save it we have to press `Y`,
 and then `nano` will ask as for _"File Name to Write:"_. Let's name it as
@@ -105,15 +105,18 @@ name. After we are done we can close `nano` as before with `Ctrl`+`X`.
 
 ### `touch`
 
-Some programs do not generate output files themselves but instead
-require that empty files have already been generated. When the program
-is run, it searches for an existing file to populate with its output.
-The `touch` command allows us to efficiently generate a blank text file
-to be used by such programs.
+The touch command's primary function is to modify a timestamp. Commonly, the utility is used for file creation, although this is not its primary function. The terminal program can change the modification and access time for any given file. The touch command creates a file only if the file doesn't already exist.
+
+Some programs do not generate output files themselves but instead require that empty files have already been generated. When the program is run, it searches for an existing file to populate with its output. The `touch` command allows us to efficiently generate a blank text file to be used by such programs.
+
 
 ```
 touch my_first_touch_file.txt
 ```
+
+!!! question
+     1. What happens when you type `touch test_file_{0..5}.txt` in your home directory? 
+     2. What happens when you type `touch test_file_{a..e}.txt` in your home directory? 
 
 !!! tip "Homework"
     Explore `vim`.<br /> 
