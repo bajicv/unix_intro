@@ -210,7 +210,7 @@ awk '$0 !~ /#/' chr8.gff | head
 or even shorter: 
 
 ```
-awk '!/#/' chr8.gff
+awk '!/#/' chr8.gff | head
 ```
 
 !!! question "Task"
