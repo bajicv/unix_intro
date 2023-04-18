@@ -114,8 +114,8 @@ cat 1_browsing_textfiles.txt 2_searching_patterns.txt > new_cat_1_2_file.txt
 !!! question
     Which option of the `cat` command you will use to find out: <br />a) how
     many lines there are in `1_browsing_textfiles.txt` including blank
-    likes? <br />b) how many lines there are in `1_browsing_textfiles.txt`
-    excluding blank likes? 
+    lines? <br />b) how many lines there are in `1_browsing_textfiles.txt`
+    excluding blank lines? 
     
     ??? note "Click for Answer"
         <br />a) `cat -n 1_browsing_textfiles.txt` gives 81 lines in total

@@ -70,6 +70,19 @@ scp -rJ YourID@andorra.imp.fu-berlin.de YourID@evop-login.imp.fu-berlin.de:~/uni
 
 Please note that here we are using our current directory (`.`) at our local computers as the location to which the file will be copied, and since we are already logged-in to our computers we do not need to print the entire paths such as `username2@destination_host:directory2/filename2`. We use option `-J` to specify `andorra` as jump host (similar to what we did with `ssh`), and `-r` option to be able to copy directory and files in it. 
 
+If  `scp` with `-J` doesn't work for you, you can use the two-step approach.
+
+1. While on `evop-login` server `scp` desired directory/file (e.g. `unix_intro`) to your home directory `~` on `andorra` server.
+
+```
+scp –r unix_intro ZEDAT_ID@andorra.imp.fu-berlin.de:~/
+```
+
+2. While on your __personal/local computer__ `scp` files from `andorra` to your current working directory `.` at your local computer.
+
+```
+scp –r ZEDAT_ID@andorra.imp.fu-berlin.de:~/unix_intro .
+```
 
 ### SFTP with Tabby
 
