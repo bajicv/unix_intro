@@ -103,4 +103,18 @@ In addition to the main `ssh` command, the SSH suite of programs includes tools 
 * `sftp` - Secure File Transfer Protocol, or 
 * `ssh-agent` to help with key management.
 
+
+If  `ssh` with `-J` doesn't work for you, you can use the two-step approach.
+
+1. While on your __personal/local computer__ `ssh`  to `andorra` server.
+
+```
+ssh ZEDAT_ID@andorra.imp.fu-berlin.de
+```
+
+2. And then from `andorra` `ssh` to `evop-login` server.
+
+```
+ssh ZEDAT_ID@evop-login.imp.fu-berlin.de
+```
 ------------------------------------------------------------------------
